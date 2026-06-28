@@ -5,14 +5,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JESDA | Global Enterprise & Solutions</title>
     <style>
-        /* Premium Colorful Palette Configuration */
+        /* High-Performance Colorful Palette */
         :root {
-            --primary-navy: #0A192F;      /* Deep Trust Corporate Navy Blue */
-            --secondary-blue: #172A45;    /* Medium Panel Blue */
-            --accent-emerald: #10B981;    /* Vibrant Growth Emerald Green */
-            --text-dark: #1E293B;         /* Slate Black for Readability */
-            --text-light: #F8FAFC;        /* Off-White text elements */
-            --bg-light: #F1F5F9;          /* Light Slate background */
+            --primary-navy: #0A192F;      /* Premium Deep Corporate Trust Blue */
+            --secondary-blue: #172A45;    /* Structure Blue */
+            --accent-emerald: #10B981;    /* Vibrant Digital Transaction Green */
+            --text-dark: #1E293B;         /* Crisp Slate Black */
+            --text-light: #F8FAFC;        /* Clean White background */
+            --bg-light: #F1F5F9;          /* Section Grey */
+        }
+
+        /* Smooth Intro Animations */
+        @keyframes logoReveal {
+            0% {
+                opacity: 0;
+                transform: scale(0.92);
+                letter-spacing: 0.1em;
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+                letter-spacing: 0.35em;
+            }
+        }
+
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         * {
@@ -21,7 +46,7 @@
             box-sizing: border-box;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             color: var(--text-dark);
             background-color: #ffffff;
             line-height: 1.6;
@@ -33,58 +58,74 @@
             padding: 0 24px;
         }
 
-        /* High-Impact Navy Navigation Banner */
+        /* Clean High-Contrast Brand Header */
         header {
             background-color: var(--primary-navy);
-            padding: 25px 0;
+            padding: 35px 0; /* Expanded padding for a more premium look */
             text-align: center;
             border-bottom: 3px solid var(--accent-emerald);
             box-shadow: 0 4px 20px rgba(10, 25, 47, 0.15);
         }
+        
+        /* Enlarged Brand Name with Reveal Animation */
         .logo {
-            font-size: 2.3rem;
-            font-weight: 800;
+            font-size: 3.5rem; /* Enlarged from 2.3rem for high impact */
+            font-weight: 900;
             letter-spacing: 0.35em;
             text-transform: uppercase;
             color: #ffffff;
-            margin-bottom: 4px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            margin-bottom: 8px;
+            animation: logoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            display: inline-block;
         }
         .tagline {
-            font-size: 0.9rem;
-            letter-spacing: 0.2em;
+            font-size: 0.95rem;
+            letter-spacing: 0.22em;
             text-transform: uppercase;
             color: var(--accent-emerald);
-            font-weight: 600;
+            font-weight: 700;
+            animation: fadeUp 1s ease-out 0.4s forwards;
+            opacity: 0; /* Controlled by animation delays */
         }
 
-        /* Vivid Gradient Hero Arena */
+        /* Modern Gradient Hero Section (Optimized for Speed) */
         .hero {
-            padding: 90px 0 80px 0;
+            padding: 100px 0 90px 0;
             text-align: center;
-            background: radial-gradient(circle at top right, #172A45 0%, #0A192F 100%);
+            background: radial-gradient(circle at top left, #1E3A8A 0%, #0A192F 100%);
             color: #ffffff;
-            position: relative;
         }
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 2.6rem;
             font-weight: 700;
             color: #ffffff;
             margin-bottom: 25px;
-            letter-spacing: -0.01em;
             max-width: 900px;
             margin-left: auto;
             margin-right: auto;
+            line-height: 1.3;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+            opacity: 0;
         }
+        
+        /* Enlarged Inline Brand Anchor */
+        .hero h1 span.brand-inline {
+            color: var(--accent-emerald);
+            font-weight: 800;
+            letter-spacing: 0.05em;
+        }
+        
         .hero p {
             font-size: 1.2rem;
             color: #94A3B8;
             max-width: 750px;
             margin: 0 auto;
             line-height: 1.7;
+            animation: fadeUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+            opacity: 0;
         }
 
-        /* Section Heading Accents */
+        /* Section Headings */
         .section-title {
             text-align: center;
             font-size: 1.75rem;
@@ -104,7 +145,7 @@
             border-radius: 2px;
         }
 
-        /* Vibrant Interactive Capability Cards */
+        /* E-Commerce Priority Service Layout */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -118,27 +159,26 @@
             border: 1px solid #E2E8F0;
             border-top: 5px solid var(--primary-navy);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, border-top-color 0.3s ease, box-shadow 0.3s ease;
         }
+        
+        /* Highlight the #1 Priority: E-Commerce Card */
+        .service-card.priority-one {
+            border-top-color: var(--accent-emerald);
+            background: linear-gradient(180deg, #ffffff 0%, #F8FAFC 100%);
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.1);
+        }
+
         .service-card:hover {
             transform: translateY(-5px);
             border-top-color: var(--accent-emerald);
-            box-shadow: 0 12px 25px -5px rgba(16, 185, 129, 0.15);
+            box-shadow: 0 12px 25px -5px rgba(16, 185, 129, 0.2);
         }
         
-        /* Decorative SVG Icon Placeholders */
-        .icon-shield {
-            width: 45px;
-            height: 45px;
-            background-color: rgba(16, 185, 129, 0.1);
-            border-radius: 6px;
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-emerald);
-            font-weight: bold;
-            font-size: 1.2rem;
+        .icon-box {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            display: inline-block;
         }
         .service-card h3 {
             font-size: 1.35rem;
@@ -151,7 +191,7 @@
             font-size: 1rem;
         }
 
-        /* High-Contrast Mission/Vision Blocks */
+        /* Mission & Vision Sections */
         .mv-section {
             background-color: var(--bg-light);
             padding: 70px 0;
@@ -179,9 +219,6 @@
             letter-spacing: 0.05em;
             margin-bottom: 18px;
             color: var(--primary-navy);
-            display: flex;
-            align-items: center;
-            gap: 10px;
         }
         .mv-box p {
             color: #334155;
@@ -190,7 +227,7 @@
             line-height: 1.7;
         }
 
-        /* Polished Deep Navy Footer */
+        /* Footer */
         footer {
             background-color: var(--primary-navy);
             padding: 35px 0;
@@ -198,14 +235,11 @@
             color: #94A3B8;
             font-size: 0.9rem;
             letter-spacing: 0.05em;
-            border-top: 1px solid var(--secondary-blue);
         }
 
-        /* Responsive Viewport Normalization */
         @media (max-width: 768px) {
-            .logo { font-size: 1.8rem; }
-            .hero h1 { font-size: 1.9rem; }
-            .hero p { font-size: 1.05rem; }
+            .logo { font-size: 2.6rem; letter-spacing: 0.25em; }
+            .hero h1 { font-size: 2rem; }
             .service-card { padding: 30px 20px; }
             .mv-box { padding: 30px 25px; }
         }
@@ -213,7 +247,7 @@
 </head>
 <body>
 
-    <!-- Professional Identity Header Banner -->
+    <!-- Header Identity -->
     <header>
         <div class="container">
             <div class="logo">JESDA</div>
@@ -221,33 +255,40 @@
         </div>
     </header>
 
-    <!-- Deep Navy High-Density Introduction -->
+    <!-- Optimized Performance Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Connecting Global Markets, Optimizing Modern Supply Chains.</h1>
-            <p>JESDA is a multi-faceted global trade, e-commerce, and logistics consultancy enterprise. We bridge the gap between international manufacturing hubs and major digital consumer marketplaces, engineered with Lean precision.</p>
+            <h1><span class="brand-inline">JESDA</span> Architectures Digital Commerce & Sourcing.</h1>
+            <p>We help global brands establish dominant positions across premier digital marketplaces while engineering leaner, smarter cross-border technical procurement and supply chain strategies.</p>
         </div>
     </section>
 
-    <!-- Interactive Capability Pillars -->
+    <!-- Core Priority Capabilities -->
     <section class="container">
         <h2 class="section-title">Core Capability Pillars</h2>
         <div class="services-grid">
-            <div class="service-card">
-                <div class="icon-shield">📦</div>
-                <h3>Global Sourcing & Wholesale Trade</h3>
-                <p>Facilitating end-to-end international procurement networks, connecting high-quality manufacturing channels directly to enterprise buyers and cross-border trade loops.</p>
+            
+            <!-- Priority 1: E-Commerce Retail Trading -->
+            <div class="service-card priority-one">
+                <div class="icon-box">🌐</div>
+                <h3>E-Commerce Marketplace Solutions</h3>
+                <p>Driving data-backed B2C and B2B market penetration across dominant digital e-commerce platforms (including Amazon and Flipkart) and international retail networks.</p>
             </div>
+
+            <!-- Priority 2: Supply Chain & Sourcing Consulting -->
             <div class="service-card">
-                <div class="icon-shield">🌐</div>
-                <h3>E-Commerce Fulfillment Architecture</h3>
-                <p>Driving data-backed B2C and B2B market penetration across dominant digital e-commerce platforms and international retail networks.</p>
+                <div class="icon-box">📊</div>
+                <h3>Sourcing & Supply Chain Consultancy</h3>
+                <p>Facilitating end-to-end international procurement networks. We implement process optimization, vendor coordination, and strict quality auditing metrics to protect margins.</p>
             </div>
+
+            <!-- Priority 3: Shipping & Logistics Support -->
             <div class="service-card">
-                <div class="icon-shield">⚡</div>
-                <h3>Supply Chain & Logistics Consulting</h3>
-                <p>Streamlining complex trade pathways, custom freight orchestration, and inventory fulfillment management with zero-waste operational efficiency.</p>
+                <div class="icon-box">📦</div>
+                <h3>Shipping & Logistics Orchestration</h3>
+                <p>Streamlining complex trade pathways, managing freight forwarding logistics, and coordinating product fulfillment channels with zero-waste operational efficiency.</p>
             </div>
+            
         </div>
     </section>
 
@@ -260,14 +301,14 @@
                     <p>To empower global commerce by building seamless, high-efficiency bridges between international production lines and the digital marketplace. We are dedicated to eliminating friction in cross-border trade through agile procurement strategies, robust supply chain consulting, and continuous process optimization.</p>
                 </div>
                 <div class="mv-box">
-                    <h3>👁️ Our Vision</h3>
+                    <h3>📈 Our Vision</h3>
                     <p>To become a premier multi-national trade and enterprise solutions infrastructure—recognized for transforming traditional sourcing pipelines into highly responsive, technology-driven supply networks that deliver quality and value globally.</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Deep-Border Foundation Footer -->
+    <!-- Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2026 JESDA. All Rights Reserved.</p>
