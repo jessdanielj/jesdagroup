@@ -5,46 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JESDA | Global Enterprise & Solutions</title>
     <style>
-        /* High-Performance Colorful Palette */
         :root {
-            --primary-navy: #0A192F;      /* Premium Deep Corporate Trust Blue */
-            --secondary-blue: #172A45;    /* Structure Blue */
-            --accent-emerald: #10B981;    /* Vibrant Digital Transaction Green */
-            --text-dark: #1E293B;         /* Crisp Slate Black */
-            --text-light: #F8FAFC;        /* Clean White background */
-            --bg-light: #F1F5F9;          /* Section Grey */
+            --primary-navy: #0A192F;      
+            --secondary-blue: #172A45;    
+            --accent-emerald: #10B981;    
+            --text-dark: #1E293B;         
+            --text-light: #F8FAFC;        
+            --bg-light: #F1F5F9;          
         }
 
-        /* Smooth Intro Animations */
+        /* Lightning-Fast High-Resolution Motion Background Animations */
+        @keyframes fluidGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
         @keyframes logoReveal {
-            0% {
-                opacity: 0;
-                transform: scale(0.92);
-                letter-spacing: 0.1em;
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1);
-                letter-spacing: 0.35em;
-            }
+            0% { opacity: 0; transform: scale(0.92); letter-spacing: 0.1em; }
+            100% { opacity: 1; transform: scale(1); letter-spacing: 0.35em; }
         }
 
         @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(15px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(15px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
             color: var(--text-dark);
@@ -52,24 +39,19 @@
             line-height: 1.6;
         }
         
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 24px;
-        }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
         /* Clean High-Contrast Brand Header */
         header {
             background-color: var(--primary-navy);
-            padding: 35px 0; /* Expanded padding for a more premium look */
+            padding: 35px 0; 
             text-align: center;
             border-bottom: 3px solid var(--accent-emerald);
             box-shadow: 0 4px 20px rgba(10, 25, 47, 0.15);
         }
         
-        /* Enlarged Brand Name with Reveal Animation */
         .logo {
-            font-size: 3.5rem; /* Enlarged from 2.3rem for high impact */
+            font-size: 3.5rem; 
             font-weight: 900;
             letter-spacing: 0.35em;
             text-transform: uppercase;
@@ -85,15 +67,18 @@
             color: var(--accent-emerald);
             font-weight: 700;
             animation: fadeUp 1s ease-out 0.4s forwards;
-            opacity: 0; /* Controlled by animation delays */
+            opacity: 0; 
         }
 
-        /* Modern Gradient Hero Section (Optimized for Speed) */
+        /* High-Resolution Animated Motion Gradient Hero Arena */
         .hero {
-            padding: 100px 0 90px 0;
+            padding: 120px 0;
             text-align: center;
-            background: radial-gradient(circle at top left, #1E3A8A 0%, #0A192F 100%);
+            background: linear-gradient(-45deg, #0A192F, #1E3A8A, #0D9488, #020617);
+            background-size: 400% 400%;
+            animation: fluidGradient 15s ease infinite;
             color: #ffffff;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
         .hero h1 {
             font-size: 2.6rem;
@@ -108,7 +93,6 @@
             opacity: 0;
         }
         
-        /* Enlarged Inline Brand Anchor */
         .hero h1 span.brand-inline {
             color: var(--accent-emerald);
             font-weight: 800;
@@ -145,7 +129,7 @@
             border-radius: 2px;
         }
 
-        /* E-Commerce Priority Service Layout */
+        /* High-Quality Image-Enhanced Service Grid Layout */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -154,39 +138,44 @@
         }
         .service-card {
             background-color: #ffffff;
-            padding: 40px 30px;
             border-radius: 8px;
             border: 1px solid #E2E8F0;
-            border-top: 5px solid var(--primary-navy);
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, border-top-color 0.3s ease, box-shadow 0.3s ease;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
         
-        /* Highlight the #1 Priority: E-Commerce Card */
         .service-card.priority-one {
-            border-top-color: var(--accent-emerald);
+            border: 2px solid var(--accent-emerald);
             background: linear-gradient(180deg, #ffffff 0%, #F8FAFC 100%);
             box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.1);
         }
 
         .service-card:hover {
             transform: translateY(-5px);
-            border-top-color: var(--accent-emerald);
             box-shadow: 0 12px 25px -5px rgba(16, 185, 129, 0.2);
         }
         
-        .icon-box {
-            font-size: 2rem;
-            margin-bottom: 15px;
-            display: inline-block;
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--primary-navy);
         }
-        .service-card h3 {
+        .service-card.priority-one .card-img {
+            border-bottom-color: var(--accent-emerald);
+        }
+        
+        .card-content {
+            padding: 30px 25px;
+        }
+        .card-content h3 {
             font-size: 1.35rem;
             font-weight: 700;
             margin-bottom: 15px;
             color: var(--primary-navy);
         }
-        .service-card p {
+        .card-content p {
             color: #475569;
             font-size: 1rem;
         }
@@ -227,6 +216,87 @@
             line-height: 1.7;
         }
 
+        /* Secure CRM Intake Form Arena */
+        .contact-section {
+            padding: 80px 0;
+            background-color: #ffffff;
+        }
+        .contact-wrapper {
+            max-width: 650px;
+            margin: 0 auto;
+            background: var(--bg-light);
+            padding: 45px 35px;
+            border-radius: 12px;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            margin-bottom: 6px;
+        }
+        .form-group label span.required {
+            color: #EF4444;
+        }
+        .form-control {
+            width: 100%;
+            padding: 12px;
+            font-size: 1rem;
+            border: 1px solid #CBD5E1;
+            border-radius: 6px;
+            background-color: #ffffff;
+            color: var(--text-dark);
+            transition: border-color 0.2s;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent-emerald);
+            box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1);
+        }
+        
+        /* Access Rules Submit Button States */
+        .btn-submit {
+            width: 100%;
+            padding: 14px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            border: none;
+            border-radius: 6px;
+            cursor: not-allowed;
+            background-color: #CBD5E1;
+            color: #94A3B8;
+            transition: all 0.3s;
+        }
+        .btn-submit.ready {
+            background-color: var(--accent-emerald);
+            color: #ffffff;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        }
+        .btn-submit.ready:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+        }
+        
+        .form-status {
+            display: none;
+            margin-top: 15px;
+            padding: 12px;
+            text-align: center;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+        .form-status.success { display: block; background-color: #D1FAE5; color: #065F46; }
+        .form-status.error { display: block; background-color: #FEE2E2; color: #991B1B; }
+
         /* Footer */
         footer {
             background-color: var(--primary-navy);
@@ -242,12 +312,13 @@
             .hero h1 { font-size: 2rem; }
             .service-card { padding: 30px 20px; }
             .mv-box { padding: 30px 25px; }
+            .contact-wrapper { padding: 30px 20px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Identity -->
+    <!-- Header Identity Banner -->
     <header>
         <div class="container">
             <div class="logo">JESDA</div>
@@ -255,7 +326,7 @@
         </div>
     </header>
 
-    <!-- Optimized Performance Hero Section -->
+    <!-- Moving Dynamic Motion Gradient Background Section -->
     <section class="hero">
         <div class="container">
             <h1><span class="brand-inline">JESDA</span> Architectures Digital Commerce & Sourcing.</h1>
@@ -263,30 +334,36 @@
         </div>
     </section>
 
-    <!-- Core Priority Capabilities -->
+    <!-- Core Priority Capabilities with High Resolution Operational Images -->
     <section class="container">
         <h2 class="section-title">Core Capability Pillars</h2>
         <div class="services-grid">
             
             <!-- Priority 1: E-Commerce Retail Trading -->
             <div class="service-card priority-one">
-                <div class="icon-box">🌐</div>
-                <h3>E-Commerce Marketplace Solutions</h3>
-                <p>Driving data-backed B2C and B2B market penetration across dominant digital e-commerce platforms (including Amazon and Flipkart) and international retail networks.</p>
+                <img class="card-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="E-Commerce Architecture Analytics">
+                <div class="card-content">
+                    <h3>E-Commerce Marketplace Solutions</h3>
+                    <p>Driving data-backed B2C and B2B market penetration across dominant digital e-commerce platforms (including Amazon and Flipkart) and international retail networks.</p>
+                </div>
             </div>
 
             <!-- Priority 2: Supply Chain & Sourcing Consulting -->
             <div class="service-card">
-                <div class="icon-box">📊</div>
-                <h3>Sourcing & Supply Chain Consultancy</h3>
-                <p>Facilitating end-to-end international procurement networks. We implement process optimization, vendor coordination, and strict quality auditing metrics to protect margins.</p>
+                <img class="card-img" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Global Supply Chain Pipeline Warehouse Sourcing">
+                <div class="card-content">
+                    <h3>Sourcing & Supply Chain Consultancy</h3>
+                    <p>Facilitating end-to-end international procurement networks. We implement process optimization, vendor coordination, and strict quality auditing metrics to protect margins.</p>
+                </div>
             </div>
 
             <!-- Priority 3: Shipping & Logistics Support -->
             <div class="service-card">
-                <div class="icon-box">📦</div>
-                <h3>Shipping & Logistics Orchestration</h3>
-                <p>Streamlining complex trade pathways, managing freight forwarding logistics, and coordinating product fulfillment channels with zero-waste operational efficiency.</p>
+                <img class="card-img" src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=600&q=80" alt="Freight Terminal Logistics Coordination Sourcing">
+                <div class="card-content">
+                    <h3>Shipping & Logistics Orchestration</h3>
+                    <p>Streamlining complex trade pathways, managing freight forwarding logistics, and coordinating product fulfillment channels with zero-waste operational efficiency.</p>
+                </div>
             </div>
             
         </div>
@@ -308,6 +385,44 @@
         </div>
     </section>
 
+    <!-- Secure CRM Intake Form Arena -->
+    <section class="contact-section">
+        <div class="container">
+            <h2 class="section-title">Connect with Our Enterprise</h2>
+            <div class="contact-wrapper">
+                <form id="crmContactForm">
+                    <div class="form-group">
+                        <label for="formName">Full Name <span class="required">*</span></label>
+                        <input type="text" id="formName" name="name" class="form-control" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="formEmail">Business Email <span class="required">*</span></label>
+                        <input type="email" id="formEmail" name="email" class="form-control" placeholder="name@company.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="formCountry">Country <span class="required">*</span></label>
+                        <input type="text" id="formCountry" name="country" class="form-control" placeholder="e.g. India" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="formCity">City <span class="required">*</span></label>
+                        <input type="text" id="formCity" name="city" class="form-control" placeholder="e.g. New Delhi" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="formPhone">Contact Number <span class="optional">(Optional)</span></label>
+                        <input type="tel" id="formPhone" name="phone" class="form-control" placeholder="+91 XXXXX XXXXX">
+                    </div>
+                    <div class="form-group">
+                        <label for="formMessage">Message / Project Summary <span class="required">*</span></label>
+                        <textarea id="formMessage" name="message" class="form-control" rows="4" placeholder="Describe your wholesale trade or marketplace requirements..." required></textarea>
+                    </div>
+                    
+                    <button type="submit" id="submitBtn" class="btn-submit" disabled>Submit Request</button>
+                    <div id="statusMessage" class="form-status"></div>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -315,5 +430,75 @@
         </div>
     </footer>
 
+    <!-- Verification Engine & Google Sheet Pipeline Client Code Script -->
+    <script>
+        const form = document.getElementById('crmContactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const emailInput = document.getElementById('formEmail');
+        const requiredInputs = Array.from(form.querySelectorAll('[required]'));
+
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return re.test(String(email).toLowerCase());
+        }
+
+        function checkFormValidity() {
+            let allFilled = requiredInputs.every(input => input.value.trim() !== "");
+            let isEmailValid = validateEmail(emailInput.value);
+
+            if (allFilled && isEmailValid) {
+                submitBtn.removeAttribute('disabled');
+                submitBtn.classList.add('ready');
+            } else {
+                submitBtn.setAttribute('disabled', 'true');
+                submitBtn.classList.remove('ready');
+            }
+        }
+
+        form.addEventListener('input', checkFormValidity);
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            submitBtn.setAttribute('disabled', 'true');
+            submitBtn.classList.remove('ready');
+            submitBtn.innerText = "Processing Route...";
+            
+            const statusBox = document.getElementById('statusMessage');
+            statusBox.className = "form-status"; 
+            statusBox.style.display = "none";
+
+            const formData = new FormData(form);
+            const searchParams = new URLSearchParams();
+            
+            for (const pair of formData) {
+                searchParams.append(pair[0], pair[1]);
+            }
+
+            // ==========================================
+            // PASTE YOUR GOOGLE SHEET WEB APP URL HERE
+            // ==========================================
+            const googleAppScriptUrl = 'https://script.google.com/macros/s/AKfycbyW_01_FKzce_98oZe1WJPXXFQGsxlgK4SxaUYzgOLjBDIge8VpT7Eb7y6ILKmAd7wd/exec';
+
+            fetch(googleAppScriptUrl, {
+                method: 'POST',
+                mode: 'no-cors', 
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: searchParams
+            })
+            .then(() => {
+                statusBox.innerText = "Success! Your request has been logged to the CRM spreadsheet routing system.";
+                statusBox.classList.add('success');
+                form.reset();
+                submitBtn.innerText = "Submit Request";
+            })
+            .catch(err => {
+                statusBox.innerText = "Network transmission error. Please verify network infrastructure connectivity.";
+                statusBox.classList.add('error');
+                submitBtn.innerText = "Submit Request";
+                checkFormValidity();
+            });
+        });
+    </script>
 </body>
 </html>
