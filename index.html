@@ -5,7 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>JESDA | Global Enterprise & Solutions</title>
     <style>
-        /* Modern Reset and Typography */
+        /* Premium Colorful Palette Configuration */
+        :root {
+            --primary-navy: #0A192F;      /* Deep Trust Corporate Navy Blue */
+            --secondary-blue: #172A45;    /* Medium Panel Blue */
+            --accent-emerald: #10B981;    /* Vibrant Growth Emerald Green */
+            --text-dark: #1E293B;         /* Slate Black for Readability */
+            --text-light: #F8FAFC;        /* Off-White text elements */
+            --bg-light: #F1F5F9;          /* Light Slate background */
+        }
+
         * {
             margin: 0;
             padding: 0;
@@ -13,113 +22,140 @@
         }
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            color: #222222;
+            color: var(--text-dark);
             background-color: #ffffff;
             line-height: 1.6;
         }
         
-        /* Container Layout */
         .container {
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
         }
 
-        /* Header / Logo Styling */
+        /* High-Impact Navy Navigation Banner */
         header {
-            padding: 40px 0;
+            background-color: var(--primary-navy);
+            padding: 25px 0;
             text-align: center;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 3px solid var(--accent-emerald);
+            box-shadow: 0 4px 20px rgba(10, 25, 47, 0.15);
         }
         .logo {
-            font-size: 2.5rem;
-            font-weight: 700;
-            letter-spacing: 0.3em;
+            font-size: 2.3rem;
+            font-weight: 800;
+            letter-spacing: 0.35em;
             text-transform: uppercase;
-            color: #000000;
+            color: #ffffff;
             margin-bottom: 4px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         .tagline {
-            font-size: 0.95rem;
-            letter-spacing: 0.15em;
+            font-size: 0.9rem;
+            letter-spacing: 0.2em;
             text-transform: uppercase;
-            color: #777777;
+            color: var(--accent-emerald);
+            font-weight: 600;
         }
 
-        /* Hero Section */
+        /* Vivid Gradient Hero Arena */
         .hero {
-            padding: 80px 0 60px 0;
+            padding: 90px 0 80px 0;
             text-align: center;
-            background: linear-gradient(180deg, #ffffff 0%, #fafafa 100%);
+            background: radial-gradient(circle at top right, #172A45 0%, #0A192F 100%);
+            color: #ffffff;
+            position: relative;
         }
         .hero h1 {
-            font-size: 2.2rem;
-            font-weight: 600;
-            color: #111111;
-            margin-bottom: 20px;
-            letter-spacing: -0.02em;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 25px;
+            letter-spacing: -0.01em;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
         }
         .hero p {
-            font-size: 1.15rem;
-            color: #555555;
-            max-width: 800px;
+            font-size: 1.2rem;
+            color: #94A3B8;
+            max-width: 750px;
             margin: 0 auto;
+            line-height: 1.7;
         }
 
-        /* Section Divider Title */
+        /* Section Heading Accents */
         .section-title {
             text-align: center;
-            font-size: 1.5rem;
-            font-weight: 600;
+            font-size: 1.75rem;
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.1em;
-            margin: 60px 0 40px 0;
-            position: relative;
+            letter-spacing: 0.12em;
+            margin: 70px 0 45px 0;
+            color: var(--primary-navy);
         }
         .section-title::after {
             content: '';
             display: block;
-            width: 40px;
-            height: 2px;
-            background-color: #000000;
-            margin: 12px auto 0 auto;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-emerald);
+            margin: 14px auto 0 auto;
+            border-radius: 2px;
         }
 
-        /* Service Grid Structure */
+        /* Vibrant Interactive Capability Cards */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 30px;
-            margin-bottom: 40px;
+            margin-bottom: 50px;
         }
         .service-card {
             background-color: #ffffff;
-            padding: 35px 30px;
-            border-radius: 4px;
-            border: 1px solid #eaeaea;
-            transition: all 0.3s ease;
+            padding: 40px 30px;
+            border-radius: 8px;
+            border: 1px solid #E2E8F0;
+            border-top: 5px solid var(--primary-navy);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
         }
         .service-card:hover {
-            border-color: #a0a0a0;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.02);
+            transform: translateY(-5px);
+            border-top-color: var(--accent-emerald);
+            box-shadow: 0 12px 25px -5px rgba(16, 185, 129, 0.15);
+        }
+        
+        /* Decorative SVG Icon Placeholders */
+        .icon-shield {
+            width: 45px;
+            height: 45px;
+            background-color: rgba(16, 185, 129, 0.1);
+            border-radius: 6px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent-emerald);
+            font-weight: bold;
+            font-size: 1.2rem;
         }
         .service-card h3 {
-            font-size: 1.25rem;
-            font-weight: 600;
+            font-size: 1.35rem;
+            font-weight: 700;
             margin-bottom: 15px;
-            color: #111111;
+            color: var(--primary-navy);
         }
         .service-card p {
-            color: #666666;
-            font-size: 0.98rem;
+            color: #475569;
+            font-size: 1rem;
         }
 
-        /* Mission & Vision Layout */
+        /* High-Contrast Mission/Vision Blocks */
         .mv-section {
-            background-color: #fafafa;
-            padding: 60px 0;
-            border-top: 1px solid #f0f0f0;
-            border-bottom: 1px solid #f0f0f0;
+            background-color: var(--bg-light);
+            padding: 70px 0;
+            border-top: 1px solid #E2E8F0;
         }
         .mv-grid {
             display: grid;
@@ -127,45 +163,57 @@
             gap: 40px;
         }
         @media (max-width: 600px) {
-            .mv-grid {
-                grid-template-columns: 1fr;
-            }
+            .mv-grid { grid-template-columns: 1fr; }
+        }
+        .mv-box {
+            background: #ffffff;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+            border-left: 5px solid var(--accent-emerald);
         }
         .mv-box h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
+            font-size: 1.4rem;
+            font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 0.05em;
-            margin-bottom: 15px;
-            color: #000000;
+            margin-bottom: 18px;
+            color: var(--primary-navy);
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
         .mv-box p {
-            color: #555555;
+            color: #334155;
             font-size: 1.05rem;
             text-align: justify;
+            line-height: 1.7;
         }
 
-        /* Footer */
+        /* Polished Deep Navy Footer */
         footer {
-            padding: 40px 0;
+            background-color: var(--primary-navy);
+            padding: 35px 0;
             text-align: center;
-            color: #999999;
-            font-size: 0.88rem;
+            color: #94A3B8;
+            font-size: 0.9rem;
             letter-spacing: 0.05em;
+            border-top: 1px solid var(--secondary-blue);
         }
 
-        /* Mobile Optimization overrides */
+        /* Responsive Viewport Normalization */
         @media (max-width: 768px) {
-            .logo { font-size: 2rem; }
-            .hero h1 { font-size: 1.75rem; }
-            .hero p { font-size: 1rem; }
-            .service-card { padding: 25px 20px; }
+            .logo { font-size: 1.8rem; }
+            .hero h1 { font-size: 1.9rem; }
+            .hero p { font-size: 1.05rem; }
+            .service-card { padding: 30px 20px; }
+            .mv-box { padding: 30px 25px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header & Brand Positioning -->
+    <!-- Professional Identity Header Banner -->
     <header>
         <div class="container">
             <div class="logo">JESDA</div>
@@ -173,7 +221,7 @@
         </div>
     </header>
 
-    <!-- Hero Framework Intro -->
+    <!-- Deep Navy High-Density Introduction -->
     <section class="hero">
         <div class="container">
             <h1>Connecting Global Markets, Optimizing Modern Supply Chains.</h1>
@@ -181,19 +229,22 @@
         </div>
     </section>
 
-    <!-- Core Pillars Array -->
+    <!-- Interactive Capability Pillars -->
     <section class="container">
         <h2 class="section-title">Core Capability Pillars</h2>
         <div class="services-grid">
             <div class="service-card">
+                <div class="icon-shield">📦</div>
                 <h3>Global Sourcing & Wholesale Trade</h3>
                 <p>Facilitating end-to-end international procurement networks, connecting high-quality manufacturing channels directly to enterprise buyers and cross-border trade loops.</p>
             </div>
             <div class="service-card">
+                <div class="icon-shield">🌐</div>
                 <h3>E-Commerce Fulfillment Architecture</h3>
-                <p>Driving data-backed B2C and B2B market penetration across dominant digital e-commerce platforms and international retail retail structures.</p>
+                <p>Driving data-backed B2C and B2B market penetration across dominant digital e-commerce platforms and international retail networks.</p>
             </div>
             <div class="service-card">
+                <div class="icon-shield">⚡</div>
                 <h3>Supply Chain & Logistics Consulting</h3>
                 <p>Streamlining complex trade pathways, custom freight orchestration, and inventory fulfillment management with zero-waste operational efficiency.</p>
             </div>
@@ -216,7 +267,7 @@
         </div>
     </section>
 
-    <!-- Footer Identity -->
+    <!-- Deep-Border Foundation Footer -->
     <footer>
         <div class="container">
             <p>&copy; 2026 JESDA. All Rights Reserved.</p>
