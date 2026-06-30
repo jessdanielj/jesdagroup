@@ -41,13 +41,24 @@
         
         .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
 
-        /* Clean High-Contrast Brand Header */
+        /* Clean High-Contrast Brand Header Layout */
         header {
             background-color: var(--primary-navy);
-            padding: 35px 0; 
-            text-align: center;
+            padding: 30px 0; 
             border-bottom: 3px solid var(--accent-emerald);
             box-shadow: 0 4px 20px rgba(10, 25, 47, 0.15);
+        }
+        
+        .header-wrap {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .header-brand {
+            text-align: left;
         }
         
         .logo {
@@ -56,7 +67,7 @@
             letter-spacing: 0.35em;
             text-transform: uppercase;
             color: #ffffff;
-            margin-bottom: 8px;
+            margin-bottom: 4px;
             animation: logoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
             display: inline-block;
         }
@@ -68,6 +79,32 @@
             font-weight: 700;
             animation: fadeUp 1s ease-out 0.4s forwards;
             opacity: 0; 
+        }
+
+        /* Anti-Spam Secure Header Contact Node */
+        .header-contact {
+            animation: fadeUp 1s ease-out 0.6s forwards;
+            opacity: 0;
+        }
+        
+        .header-contact a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            letter-spacing: 0.05em;
+            border: 1px solid rgba(16, 185, 129, 0.4);
+            padding: 10px 18px;
+            border-radius: 4px;
+            background-color: rgba(23, 42, 69, 0.6);
+            transition: all 0.3s ease;
+        }
+        
+        .header-contact a:hover {
+            color: var(--accent-emerald);
+            border-color: var(--accent-emerald);
+            background-color: rgba(16, 185, 129, 0.08);
+            box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
         }
 
         /* High-Resolution Animated Motion Gradient Hero Arena */
@@ -308,6 +345,8 @@
         }
 
         @media (max-width: 768px) {
+            .header-wrap { flex-direction: column; text-align: center; }
+            .header-brand { text-align: center; }
             .logo { font-size: 2.6rem; letter-spacing: 0.25em; }
             .hero h1 { font-size: 2rem; }
             .service-card { padding: 30px 20px; }
@@ -321,8 +360,16 @@
     <!-- Header Identity Banner -->
     <header>
         <div class="container">
-            <div class="logo">JESDA</div>
-            <div class="tagline">Global Enterprise & Solutions</div>
+            <div class="header-wrap">
+                <div class="header-brand">
+                    <div class="logo">JESDA</div>
+                    <div class="tagline">Global Enterprise & Solutions</div>
+                </div>
+                <!-- Dynamic secure obfuscated link injects here -->
+                <div class="header-contact">
+                    <a href="#" id="secure-header-link">Loading Enterprise Node...</a>
+                </div>
+            </div>
         </div>
     </header>
 
@@ -374,11 +421,11 @@
         <div class="container">
             <div class="mv-grid">
                 <div class="mv-box">
-                    <h3>🎯 Our Mission</h3>
+                    <h3>&#128188; Our Mission</h3>
                     <p>To empower global commerce by building seamless, high-efficiency bridges between international production lines and the digital marketplace. We are dedicated to eliminating friction in cross-border trade through agile procurement strategies, robust supply chain consulting, and continuous process optimization.</p>
                 </div>
                 <div class="mv-box">
-                    <h3>📈 Our Vision</h3>
+                    <h3>&#128200; Our Vision</h3>
                     <p>To become a premier multi-national trade and enterprise solutions infrastructure—recognized for transforming traditional sourcing pipelines into highly responsive, technology-driven supply networks that deliver quality and value globally.</p>
                 </div>
             </div>
@@ -432,6 +479,19 @@
 
     <!-- Verification Engine & Google Sheet Pipeline Client Code Script -->
     <script>
+        // Anti-Spam Email Obfuscator Engine
+        document.addEventListener("DOMContentLoaded", function() {
+            var prefix = "daniel";           // Configured mailbox name[span_1](start_span)[span_1](end_span)
+            var domain = "jesdagroup.com";   // Reassembles safely clear of scrapers[span_2](start_span)[span_2](end_span)
+            var target = document.getElementById("secure-header-link");
+            
+            if (target) {
+                var cleanAddress = prefix + "@" + domain;
+                target.textContent = cleanAddress;
+                target.href = "mailto:" + cleanAddress;
+            }
+        });
+
         const form = document.getElementById('crmContactForm');
         const submitBtn = document.getElementById('submitBtn');
         const emailInput = document.getElementById('formEmail');
@@ -475,9 +535,6 @@
                 searchParams.append(pair[0], pair[1]);
             }
 
-            // ==========================================
-            // PASTE YOUR GOOGLE SHEET WEB APP URL HERE
-            // ==========================================
             const googleAppScriptUrl = 'https://script.google.com/macros/s/AKfycbyW_01_FKzce_98oZe1WJPXXFQGsxlgK4SxaUYzgOLjBDIge8VpT7Eb7y6ILKmAd7wd/exec';
 
             fetch(googleAppScriptUrl, {
