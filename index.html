@@ -512,24 +512,29 @@
             }
 
             // Google Apps Script Pipeline Target
-            const googleAppScriptUrl = 'https://script.google.com/macros/s/AKfycbzRUA0iXWxrplAev_uvuWpwIlsnpCNZjf0Nj8MBtZHa-SyP8VBDl9WePRjywsQ34ges/exec';
-            
+            const googleAppScriptUrl = 'https://script.google.com/macros/s/AKfycbyW_01_FKzce_98oZe1WJPXXFQGsxlgK4SxaUYzgOLjBDIge8VpT7Eb7y6ILKmAd7wd/exec';
 
             fetch(googleAppScriptUrl, {
                 method: 'POST',
-                mode: 'cors', 
+                mode: 'no-cors', 
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: searchParams
             })
             .then(() => {
-                statusBox.innerText = "Success! Your request has been logged to the CRM spreadsheet routing system.";
-                statusBox.classList.add('success');
+                // Display specific response text
+                statusBox.innerText = "Your Details Submitted and Our Team will contact you Soon.";
+                statusBox.className = "form-status success";
+                
+                // Clear the form entry boxes completely
                 form.reset();
+                
+                // Re-enable validation state and setup
                 submitBtn.innerText = "Submit Request";
+                checkFormValidity();
             })
             .catch(err => {
                 statusBox.innerText = "Network transmission error. Please verify network infrastructure connectivity.";
-                statusBox.classList.add('error');
+                statusBox.className = "form-status error";
                 submitBtn.innerText = "Submit Request";
                 checkFormValidity();
             });
