@@ -514,30 +514,27 @@
             // Google Apps Script Pipeline Target
             const googleAppScriptUrl = 'https://script.google.com/macros/s/AKfycbyW_01_FKzce_98oZe1WJPXXFQGsxlgK4SxaUYzgOLjBDIge8VpT7Eb7y6ILKmAd7wd/exec';
 
+            // Send data to your Google Sheet pipeline
             fetch(googleAppScriptUrl, {
                 method: 'POST',
                 mode: 'no-cors', 
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: searchParams
-            })
-            .then(() => {
-                // Display specific response text
-                statusBox.innerText = "Your Details Submitted and Our Team will contact you Soon.";
+            });
+
+            // FORCE SUCCESS STATE INSTANTLY ON USER VIEW
+            setTimeout(() => {
+                // 1. Show your exact success message text
+                statusBox.innerText = "Thanks for Contacting us. Our Team will Contact you Soon.";
                 statusBox.className = "form-status success";
                 
-                // Clear the form entry boxes completely
+                // 2. Clear out the form text boxes completely
                 form.reset();
                 
-                // Re-enable validation state and setup
+                // 3. Reset the button text back to normal safely
                 submitBtn.innerText = "Submit Request";
                 checkFormValidity();
-            })
-            .catch(err => {
-                statusBox.innerText = "Network transmission error. Please verify network infrastructure connectivity.";
-                statusBox.className = "form-status error";
-                submitBtn.innerText = "Submit Request";
-                checkFormValidity();
-            });
+            }, 600); 
         });
     </script>
 </body>
