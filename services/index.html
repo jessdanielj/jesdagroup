@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services | JESDA Group</title>
+    <style>
+        :root {
+            --primary-navy: #0A192F;      
+            --secondary-blue: #172A45;    
+            --accent-emerald: #10B981;    
+            --text-dark: #1E293B;         
+            --text-light: #F8FAFC;        
+            --bg-light: #F1F5F9;          
+        }
+
+        @keyframes logoReveal {
+            0% { opacity: 0; transform: scale(0.92); letter-spacing: 0.1em; }
+            100% { opacity: 1; transform: scale(1); letter-spacing: 0.35em; }
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            color: var(--text-dark);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
+        /* Clean High-Contrast Brand Header */
+        header {
+            background-color: var(--primary-navy);
+            padding: 35px 0; 
+            text-align: center;
+            border-bottom: 3px solid var(--accent-emerald);
+            box-shadow: 0 4px 20px rgba(10, 25, 47, 0.15);
+        }
+        
+        .logo {
+            font-size: 3.5rem; 
+            font-weight: 900;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: #ffffff;
+            margin-bottom: 8px;
+            animation: logoReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            display: inline-block;
+        }
+        .tagline {
+            font-size: 0.95rem;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--accent-emerald);
+            font-weight: 700;
+        }
+
+        /* Global Header Navigation Styles */
+        .main-nav {
+            margin-top: 25px;
+        }
+        .main-nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            padding: 0;
+        }
+        .main-nav a {
+            color: #94A3B8;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            transition: color 0.2s ease;
+        }
+        .main-nav a:hover, .main-nav a.active {
+            color: var(--accent-emerald);
+        }
+
+        /* Section Headings */
+        .section-title {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.12em;
+            margin: 60px 0 45px 0;
+            color: var(--primary-navy);
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background-color: var(--accent-emerald);
+            margin: 14px auto 0 auto;
+            border-radius: 2px;
+        }
+
+        /* High-Quality Image-Enhanced Service Grid Layout */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 80px;
+        }
+        .service-card {
+            background-color: #ffffff;
+            border-radius: 8px;
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card.priority-one {
+            border: 2px solid var(--accent-emerald);
+            background: linear-gradient(180deg, #ffffff 0%, #F8FAFC 100%);
+            box-shadow: 0 10px 15px -3px rgba(16, 185, 129, 0.1);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px -5px rgba(16, 185, 129, 0.2);
+        }
+        
+        .card-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 4px solid var(--primary-navy);
+        }
+        .service-card.priority-one .card-img {
+            border-bottom-color: var(--accent-emerald);
+        }
+        
+        .card-content {
+            padding: 30px 25px;
+        }
+        .card-content h3 {
+            font-size: 1.35rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--primary-navy);
+        }
+        .card-content p {
+            color: #475569;
+            font-size: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-navy);
+            padding: 35px 0;
+            text-align: center;
+            color: #94A3B8;
+            font-size: 0.9rem;
+            letter-spacing: 0.05em;
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 2.6rem; letter-spacing: 0.25em; }
+            .service-card { padding: 30px 20px; }
+            .main-nav ul { gap: 15px; }
+            .main-nav a { font-size: 0.85rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Identity Banner -->
+    <header>
+        <div class="container">
+            <div class="logo">JESDA</div>
+            <div class="tagline">Global Enterprise & Solutions</div>
+            
+            <!-- Global Enterprise Navigation System -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/products/">Products</a></li>
+                    <li><a href="/services/" class="active">Services</a></li>
+                    <li><a href="/contact/">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Core Services Section -->
+    <section class="container">
+        <h2 class="section-title">Our Service Architecture</h2>
+        <div class="services-grid">
+            
+            <!-- Service 1: E-Commerce Retail Trading -->
+            <div class="service-card priority-one">
+                <img class="card-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="E-Commerce Architecture Analytics">
+                <div class="card-content">
+                    <h3>E-Commerce Marketplace Solutions</h3>
+                    <p>Driving data-backed B2C and B2B market penetration across dominant digital e-commerce platforms (including Amazon and Flipkart) and international retail networks.</p>
+                </div>
+            </div>
+
+            <!-- Service 2: Supply Chain & Sourcing Consulting -->
+            <div class="service-card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Global Supply Chain Pipeline Warehouse Sourcing">
+                <div class="card-content">
+                    <h3>Sourcing & Supply Chain Consultancy</h3>
+                    <p>Facilitating end-to-end international procurement networks. We implement process optimization, vendor coordination, and strict quality auditing metrics to protect margins.</p>
+                </div>
+            </div>
+
+            <!-- Service 3: Shipping & Logistics Support -->
+            <div class="service-card">
+                <img class="card-img" src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=600&q=80" alt="Freight Terminal Logistics Coordination Sourcing">
+                <div class="card-content">
+                    <h3>Shipping & Logistics Orchestration</h3>
+                    <p>Streamlining complex trade pathways, managing freight forwarding logistics, and coordinating product fulfillment channels with zero-waste operational efficiency.</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 JESDA. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
