@@ -372,9 +372,9 @@
     <script>
         // Mock inventory schema configuration matrix matching upcoming database schemas
         const productInventory = [
-            { id: "P001", sku: "JSD-EL-01", name: "Premium Smart Multimeter", category: "electronics", priceINR: 4500, priceUSD: 55, img: "https://via.placeholder.com/200" },
-            { id: "P002", sku: "JSD-SL-09", name: "NEMA Solar Enclosure Box", category: "solar", priceINR: 8200, priceUSD: 99, img: "https://via.placeholder.com/200" },
-            { id: "P003", sku: "JSD-HD-04", name: "Industrial Micro-Controller Node", category: "hardware", priceINR: 6100, priceUSD: 75, img: "https://via.placeholder.com/200" }
+            { id: "P001", sku: "JSD-EL-01", name: "Premium Smart Multimeter", category: "electronics", priceINR: 4500, priceUSD: 55, img: "/images/multimeter.jpg" },
+            { id: "P002", sku: "JSD-SL-09", name: "NEMA Solar Enclosure Box", category: "solar", priceINR: 8200, priceUSD: 99, img: "/images/solar-box.jpg" },
+            { id: "P003", sku: "JSD-HD-04", name: "Industrial Micro-Controller Node", category: "hardware", priceINR: 6100, priceUSD: 75, img: "/images/hardware-node.jpg" }
         ];
 
         let globalCart = JSON.parse(localStorage.getItem('jesda_cart')) || [];
@@ -384,7 +384,7 @@
             grid.innerHTML = productInventory.map(prod => `
                 <div class="product-card">
                     <div>
-                        <img src="${prod.img}" alt="${prod.name}">
+                        <img src="${prod.img}" alt="${prod.name}" onerror="this.src='https://via.placeholder.com/200?text=Image+Pending'">
                         <div class="sku-text">SKU: ${prod.sku}</div>
                         <h4>${prod.name}</h4>
                     </div>
@@ -408,7 +408,7 @@
             }
             
             saveAndSyncCart();
-            toggleCart(true); // Automatically slide open cart view to confirm action
+            toggleCart(true); 
         }
 
         function removeCartItem(productId) {
@@ -475,9 +475,43 @@
             });
         }
 
+        // WhatsApp Routing Pipeline Integration
         function proceedToCheckout() {
             if(globalCart.length === 0) return;
-            alert("Checkout route selected! Ready to connect payment validation parameters.");
+
+            // Update this with your verified corporate inquiry phone number (Include Country Code, no symbols)
+            const whatsappNumber = "966500000000"; 
+            
+            let message = `Hello JESDA Group, I would like to inquire about a wholesale procurement order:\n\n`;
+            let totalINR = 0;
+            let totalUSD = 0;
+
+            globalCart.forEach((item, index) => {
+                const itemTotalINR = item.priceINR * item.quantity;
+                const itemTotalUSD = item.priceUSD * item.quantity;
+                totalINR += itemTotalINR;
+                totalUSD += itemTotalUSD;
+                
+                message += `${index + 1}. *${item.name}*\n`;
+                message += `   SKU: ${item.sku}\n`;
+                message += `   Qty: ${item.quantity}\n`;
+                message += `   Subtotal: ₹${itemTotalINR.toLocaleString()} / $${itemTotalUSD}\n\n`;
+            });
+
+            message += `-----------------------------\n`;
+            message += `*Estimated Total Inquiry:* ₹${totalINR.toLocaleString()} / $${totalUSD}\n\n`;
+            message += `Please verify availability and provide corporate billing terms.`;
+
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappURL = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
+            // Optional: Flush the local cart on submission redirect to close out the action session
+            localStorage.removeItem('jesda_cart');
+            globalCart = [];
+            updateCartUI();
+            toggleCart(false);
+
+            window.open(whatsappURL, '_blank');
         }
 
         document.addEventListener("DOMContentLoaded", renderStorefront);
