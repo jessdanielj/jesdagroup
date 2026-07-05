@@ -7,22 +7,82 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .strike-through { text-decoration: line-through; }
+        /* Smooth transitions for the sliding cart drawer */
+        .cart-drawer {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        .cart-drawer.open {
+            transform: translateX(0);
+        }
     </style>
 </head>
-<body class="bg-gray-50 font-sans text-gray-900">
+<body class="bg-gray-50 font-sans text-gray-900 overflow-x-hidden">
 
     <!-- Header / Navigation -->
-    <header class="bg-white shadow-sm sticky top-0 z-50">
+    <header class="bg-white shadow-sm sticky top-0 z-40">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-            <div class="text-2xl font-bold tracking-tight text-blue-600">JESDA</div>
             
-            <!-- Currency Switcher Control -->
-            <div class="flex items-center space-x-2 bg-gray-100 p-1 rounded-lg">
-                <button id="btn-INR" onclick="setCurrency('INR')" class="px-3 py-1.5 rounded-md text-sm font-semibold transition bg-white text-blue-600 shadow">INR (₹)</button>
-                <button id="btn-USD" onclick="setCurrency('USD')" class="px-3 py-1.5 rounded-md text-sm font-semibold transition text-gray-600 hover:text-gray-900">USD ($)</button>
+            <!-- Brand Logo & Navigation -->
+            <div class="flex items-center space-x-8">
+                <a href="../" class="text-2xl font-bold tracking-tight text-blue-600 hover:text-blue-700 transition">
+                    JESDA
+                </a>
+                <nav class="hidden md:flex space-x-6">
+                    <a href="../" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition">Home</a>
+                    <a href="./" class="text-sm font-semibold text-blue-600 transition">Products</a>
+                    <a href="../services/" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition">Services</a>
+                    <a href="../contact/" class="text-sm font-medium text-gray-500 hover:text-gray-900 transition">Contact</a>
+                </nav>
+            </div>
+            
+            <!-- Right Actions (Currency + Cart Indicator) -->
+            <div class="flex items-center space-x-4">
+                <!-- Currency Switcher Control -->
+                <div class="flex items-center space-x-2 bg-gray-100 p-1 rounded-lg">
+                    <button id="btn-INR" onclick="setCurrency('INR')" class="px-3 py-1.5 rounded-md text-sm font-semibold transition bg-white text-blue-600 shadow">INR (₹)</button>
+                    <button id="btn-USD" onclick="setCurrency('USD')" class="px-3 py-1.5 rounded-md text-sm font-semibold transition text-gray-600 hover:text-gray-900">USD ($)</button>
+                </div>
+
+                <!-- Interactive Cart Trigger Button -->
+                <button onclick="toggleCart(true)" class="relative p-2 text-gray-600 hover:text-blue-600 transition focus:outline-none">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                    <span id="cart-count" class="absolute -top-1 -right-1 bg-blue-600 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center hidden">0</span>
+                </button>
             </div>
         </div>
     </header>
+
+    <!-- Sliding Shopping Cart Sidebar Drawer -->
+    <div id="cart-overlay" onclick="toggleCart(false)" class="fixed inset-0 bg-black/40 z-50 hidden transition-opacity opacity-0"></div>
+    <div id="cart-sidebar" class="cart-drawer fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 flex flex-col">
+        <div class="p-6 border-b border-gray-100 flex items-center justify-between">
+            <h2 class="text-xl font-bold text-gray-900">Your Cart</h2>
+            <button onclick="toggleCart(false)" class="p-2 text-gray-400 hover:text-gray-600 transition">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Dynamic Cart Items Container -->
+        <div id="cart-items-list" class="p-6 flex-1 overflow-y-auto space-y-4">
+            <p class="text-center text-gray-400 py-12">Your cart is currently empty.</p>
+        </div>
+
+        <!-- Cart Summary Footer Drawer -->
+        <div class="p-6 border-t border-gray-100 bg-gray-50">
+            <div class="flex justify-between items-center mb-4">
+                <span class="text-base font-medium text-gray-600">Total Amount:</span>
+                <span id="cart-total-price" class="text-2xl font-extrabold text-gray-900">₹0</span>
+            </div>
+            <button onclick="alert('Checkout function pipeline integration ready!')" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-3 px-4 rounded-xl transition duration-150">
+                Proceed to Checkout
+            </button>
+        </div>
+    </div>
 
     <!-- Main Storefront Layout -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -41,25 +101,22 @@
             </div>
         </div>
 
-        <!-- Dynamic Product Catalog Grid Grid -->
+        <!-- Dynamic Product Catalog Grid -->
         <div id="product-display-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Loading Indicator Dynamic Shell Placeholder -->
             <div class="col-span-full text-center py-20 text-gray-500 font-medium">
                 Synchronizing secure matrix architecture...
             </div>
         </div>
     </main>
 
-    <!-- Global Application Engine Controller Script -->
     <script>
-        // Set the active Cloudflare Worker backend API endpoint route verbatim
         const apiEndpoint = "https://jesda-products-api.jessdaniel-j.workers.dev";
         
         let productInventory = [];
+        let shoppingCart = [];
         let currentCurrency = 'INR';
         let currentCategory = 'all';
 
-        // Initialize Application Lifecycle Sync Pipeline
         document.addEventListener("DOMContentLoaded", fetchLiveInventory);
 
         async function fetchLiveInventory() {
@@ -95,16 +152,17 @@
                 const price = currentCurrency === 'INR' ? product.priceINR : product.priceUSD;
                 const originalPrice = currentCurrency === 'INR' ? product.originalINR : product.originalUSD;
                 const symbol = currentCurrency === 'INR' ? '₹' : '$';
-                
-                // Determine if item displays an active markdown retail discount structure
                 const hasDiscount = originalPrice > price;
+
+                const imagePath = product.img.startsWith('/') ? product.img.substring(1) : product.img;
+                const finalImgSrc = `../${imagePath}`;
 
                 const cardHtml = `
                     <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col group hover:shadow-md transition duration-200">
-                        <div class="aspect-video w-full bg-gray-100 relative overflow-hidden">
-                            <div class="absolute inset-0 flex items-center justify-center text-gray-400 text-sm font-medium">
-                                [Img: ${product.img}]
-                            </div>
+                        <div class="aspect-video w-full bg-gray-100 overflow-hidden relative">
+                            <img src="${finalImgSrc}" alt="${product.name}" 
+                                 class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'absolute inset-0 flex items-center justify-center text-gray-400 text-xs font-mono bg-gray-100\'>Missing: ${imagePath}</div>';">
                         </div>
                         <div class="p-6 flex-1 flex flex-col justify-between">
                             <div>
@@ -114,9 +172,24 @@
                                 </div>
                                 <h3 class="text-lg font-bold text-gray-900 group-hover:text-blue-600 transition duration-150">${product.name}</h3>
                             </div>
-                            <div class="mt-6 pt-4 border-t border-gray-100 flex items-baseline gap-2">
-                                <span class="text-2xl font-extrabold text-gray-900">${symbol}${price.toLocaleString()}</span>
-                                ${hasDiscount ? `<span class="text-sm text-gray-400 strike-through font-medium">${symbol}${originalPrice.toLocaleString()}</span>` : ''}
+                            
+                            <div class="mt-6 pt-4 border-t border-gray-100">
+                                <div class="flex items-baseline gap-2 mb-4">
+                                    <span class="text-2xl font-extrabold text-gray-900">${symbol}${price.toLocaleString()}</span>
+                                    ${hasDiscount ? `<span class="text-sm text-gray-400 strike-through font-medium">${symbol}${originalPrice.toLocaleString()}</span>` : ''}
+                                </div>
+
+                                <!-- Quantity Selection & Add to Cart Frame -->
+                                <div class="flex items-center space-x-2">
+                                    <div class="flex items-center border border-gray-300 rounded-lg bg-gray-50">
+                                        <button onclick="adjustInputQty('${product.id}', -1)" class="px-2.5 py-1.5 text-gray-500 hover:text-gray-800 font-bold">-</button>
+                                        <input type="number" id="qty-${product.id}" value="1" min="1" class="w-10 text-center bg-transparent text-sm font-semibold focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
+                                        <button onclick="adjustInputQty('${product.id}', 1)" class="px-2.5 py-1.5 text-gray-500 hover:text-gray-800 font-bold">+</button>
+                                    </div>
+                                    <button onclick="addToCart('${product.id}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold py-2 px-3 rounded-lg transition duration-150">
+                                        Add to Cart
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -125,7 +198,109 @@
             });
         }
 
-        // Toggle UI Currency Controls State Matrix
+        // Handle Product Card Local Input Qty Operations
+        function adjustInputQty(productId, amount) {
+            const input = document.getElementById(`qty-${productId}`);
+            let currentVal = parseInt(input.value) || 1;
+            currentVal += amount;
+            if (currentVal < 1) currentVal = 1;
+            input.value = currentVal;
+        }
+
+        // Core Shopping Cart Logic Pipelines
+        function addToCart(productId) {
+            const product = productInventory.find(p => p.id === productId);
+            const qtyInput = document.getElementById(`qty-${productId}`);
+            const quantity = parseInt(qtyInput.value) || 1;
+
+            if (!product) return;
+
+            const existingItem = shoppingCart.find(item => item.id === productId);
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                shoppingCart.push({ ...product, quantity });
+            }
+
+            // Reset input display wrapper state
+            qtyInput.value = 1;
+            
+            updateCartUI();
+            toggleCart(true); // Automatically slide open cart drawer upon addition
+        }
+
+        function updateCartUI() {
+            const itemsList = document.getElementById('cart-items-list');
+            const cartCountElement = document.getElementById('cart-count');
+            const totalPriceElement = document.getElementById('cart-total-price');
+            const symbol = currentCurrency === 'INR' ? '₹' : '$';
+
+            itemsList.innerHTML = '';
+            
+            let totalCount = 0;
+            let totalPrice = 0;
+
+            if (shoppingCart.length === 0) {
+                itemsList.innerHTML = `<p class="text-center text-gray-400 py-12">Your cart is currently empty.</p>`;
+                cartCountElement.classList.add('hidden');
+                totalPriceElement.textContent = `${symbol}0`;
+                return;
+            }
+
+            shoppingCart.forEach(item => {
+                const price = currentCurrency === 'INR' ? item.priceINR : item.priceUSD;
+                const itemTotal = price * item.quantity;
+                
+                totalCount += item.quantity;
+                totalPrice += itemTotal;
+
+                const itemHtml = `
+                    <div class="flex items-center justify-between border-b border-gray-100 pb-4">
+                        <div class="flex-1 min-w-0 pr-4">
+                            <h4 class="text-sm font-bold text-gray-900 truncate">${item.name}</h4>
+                            <p class="text-xs text-gray-500 mt-0.5">${symbol}${price.toLocaleString()} × ${item.quantity}</p>
+                        </div>
+                        <div class="flex items-center space-x-2">
+                            <span class="text-sm font-extrabold text-gray-900 mr-2">${symbol}${itemTotal.toLocaleString()}</span>
+                            <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 p-1 text-xs font-semibold">Remove</button>
+                        </div>
+                    </div>
+                `;
+                itemsList.insertAdjacentHTML('beforeend', itemHtml);
+            });
+
+            // Update Global Counter Badges
+            cartCountElement.textContent = totalCount;
+            if (totalCount > 0) cartCountElement.classList.remove('hidden');
+            
+            totalPriceElement.textContent = `${symbol}${totalPrice.toLocaleString()}`;
+        }
+
+        function removeFromCart(productId) {
+            shoppingCart = shoppingCart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        // Drawer Interface Display Handlers
+        function toggleCart(open) {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            
+            if (open) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => {
+                    overlay.classList.add('opacity-100');
+                    sidebar.classList.add('open');
+                }, 10);
+            } else {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => {
+                    overlay.classList.add('hidden');
+                }, 300);
+            }
+        }
+
         function setCurrency(currency) {
             currentCurrency = currency;
             const btnINR = document.getElementById('btn-INR');
@@ -139,9 +314,9 @@
                 btnINR.className = "px-3 py-1.5 rounded-md text-sm font-semibold transition text-gray-600 hover:text-gray-900";
             }
             renderStorefront();
+            updateCartUI(); // Re-render cart item calculations using the newly selected active currency matrix
         }
 
-        // Handle Active Selection State Styling Filters
         function filterCategory(category) {
             currentCategory = category;
             const buttons = document.querySelectorAll('.cat-btn');
