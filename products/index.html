@@ -77,8 +77,8 @@
                 <span class="text-sm font-semibold text-gray-500">Subtotal Amount:</span>
                 <span id="cart-total-price" class="text-xl font-extrabold text-gray-900">₹0</span>
             </div>
-            <button onclick="alert('Checkout integration pipeline ready.')" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-3 rounded-xl transition">
-                Proceed to Checkout
+            <button onclick="proceedToWhatsAppCheckout()" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-3 rounded-xl transition shadow">
+                Proceed to WhatsApp Order
             </button>
         </div>
     </div>
@@ -285,6 +285,43 @@
             updateCartUI();
         }
 
+        // WhatsApp Checkout Engine Integration Pipeline
+        function proceedToWhatsAppCheckout() {
+            if (shoppingCart.length === 0) {
+                alert("Your cart is empty.");
+                return;
+            }
+
+            // Replace with your operational business WhatsApp number (include country code, no + signs or spaces)
+            const businessPhoneNumber = "966500000000"; 
+            const symbol = currentCurrency === 'INR' ? '₹' : '$';
+            
+            let totalAmount = 0;
+            let messageOrderLines = "";
+
+            shoppingCart.forEach((item, index) => {
+                const price = currentCurrency === 'INR' ? item.priceINR : item.priceUSD;
+                const itemTotal = price * item.quantity;
+                totalAmount += itemTotal;
+                
+                messageOrderLines += `${index + 1}. *${item.name}* (${item.sku})\n`;
+                messageOrderLines += `    Qty: ${item.quantity} × ${symbol}${price.toLocaleString()}\n`;
+                messageOrderLines += `    Total: ${symbol}${itemTotal.toLocaleString()}\n\n`;
+            });
+
+            let WhatsAppText = `*JESDA - NEW ORDER INQUIRY*\n`;
+            WhatsAppText += `=========================\n\n`;
+            WhatsAppText += `Hello JESDA Operations Team,\n\n`;
+            WhatsAppText += `I would like to place an order for the following components:\n\n`;
+            WhatsAppText += messageOrderLines;
+            WhatsAppText += `=========================\n`;
+            WhatsAppText += `*GRAND TOTAL: ${symbol}${totalAmount.toLocaleString()} (${currentCurrency})*\n\n`;
+            WhatsAppText += `Please confirm availability and sharing logistics processing timelines.`;
+
+            const secureEncodedURL = `https://api.whatsapp.com/send?phone=${businessPhoneNumber}&text=${encodeURIComponent(WhatsAppText)}`;
+            window.open(secureEncodedURL, '_blank');
+        }
+
         function toggleCart(open) {
             const sidebar = document.getElementById('cart-sidebar');
             const overlay = document.getElementById('cart-overlay');
@@ -298,6 +335,7 @@
             }
         }
 
+        // Keep local cache intact on currency switches
         function setCurrency(currency) {
             currentCurrency = currency;
             const btnINR = document.getElementById('btn-INR');
