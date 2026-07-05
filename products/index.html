@@ -12,17 +12,12 @@
             --text-dark: #1E293B;         
             --text-light: #F8FAFC;        
             --bg-light: #F1F5F9;          
+            --border-color: #E2E8F0;
         }
 
         @keyframes logoReveal {
             0% { opacity: 0; transform: scale(0.92); letter-spacing: 0.1em; }
             100% { opacity: 1; transform: scale(1); letter-spacing: 0.35em; }
-        }
-
-        @keyframes pulseGlow {
-            0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.4); }
-            70% { box-shadow: 0 0 0 15px rgba(16, 185, 129, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -86,119 +81,202 @@
             color: var(--accent-emerald);
         }
 
-        /* Coming Soon Hero Wrapper Layout */
-        .products-showcase {
-            padding: 100px 0;
-            text-align: center;
+        /* Live Storefront Filters and Bar Layout */
+        .store-filter-bar {
+            display: flex;
+            gap: 15px;
+            margin: 40px 0 30px 0;
+            flex-wrap: wrap;
+            align-items: center;
         }
 
-        .badge-coming {
-            display: inline-block;
-            background-color: rgba(16, 185, 129, 0.1);
-            color: var(--accent-emerald);
-            padding: 8px 20px;
-            font-weight: 700;
-            font-size: 0.9rem;
-            text-transform: uppercase;
-            letter-spacing: 0.15em;
-            border-radius: 50px;
-            margin-bottom: 25px;
-            border: 1px solid rgba(16, 185, 129, 0.3);
-            animation: pulseGlow 2s infinite;
+        .store-filter-bar input, .store-filter-bar select {
+            padding: 12px 16px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            font-size: 14px;
+            flex: 1;
+            min-width: 200px;
+            outline: none;
+            font-family: inherit;
         }
 
-        .showcase-title {
-            font-size: 2.5rem;
-            font-weight: 800;
-            color: var(--primary-navy);
-            margin-bottom: 20px;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .showcase-desc {
-            font-size: 1.15rem;
-            color: #475569;
-            max-width: 700px;
-            margin: 0 auto 60px auto;
-        }
-
-        /* Preview Grid Blocks */
-        .preview-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-bottom: 40px;
-        }
-
-        .preview-card {
-            background-color: #ffffff;
-            border: 1px dashed #CBD5E1;
-            border-radius: 12px;
-            padding: 40px 25px;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .preview-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background-color: #E2E8F0;
-            transition: background-color 0.3s ease;
-        }
-
-        .preview-card:hover {
-            transform: translateY(-5px);
+        .store-filter-bar input:focus, .store-filter-bar select:focus {
             border-color: var(--accent-emerald);
-            box-shadow: 0 10px 20px rgba(10, 25, 47, 0.05);
         }
 
-        .preview-card:hover::before {
-            background-color: var(--accent-emerald);
-        }
-
-        .icon-box {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-        }
-
-        .preview-card h3 {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--primary-navy);
-            margin-bottom: 12px;
-        }
-
-        .preview-card p {
-            font-size: 0.95rem;
-            color: #64748B;
-        }
-
-        .btn-notify {
-            display: inline-block;
+        .cart-toggle-btn {
             background-color: var(--primary-navy);
             color: #ffffff;
-            text-decoration: none;
-            padding: 14px 35px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 12px 24px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+            transition: all 0.2s ease;
+        }
+
+        .cart-toggle-btn:hover {
+            background-color: var(--accent-emerald);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+        }
+
+        /* Clean Professional Store Cards Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .product-card {
+            background: #ffffff;
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            padding: 24px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(10, 25, 47, 0.05);
+            border-color: #CBD5E1;
+        }
+
+        .product-card img {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            margin-bottom: 16px;
+            background: var(--bg-light);
+            border-radius: 8px;
+        }
+
+        .product-card h4 {
+            font-size: 1.15rem;
+            color: var(--primary-navy);
+            margin: 0 0 6px 0;
+            font-weight: 700;
+        }
+
+        .product-card .sku-text {
+            font-size: 11px;
+            color: #64748B;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+
+        .product-card .price-row {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--text-dark);
+            margin-bottom: 16px;
+        }
+
+        .add-to-cart-btn {
+            width: 100%;
+            background: transparent;
+            border: 2px solid var(--primary-navy);
+            color: var(--primary-navy);
+            padding: 12px;
             border-radius: 6px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.08em;
-            margin-top: 30px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 10px rgba(10, 25, 47, 0.15);
+            letter-spacing: 0.05em;
+            font-size: 0.8rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
         }
 
-        .btn-notify:hover {
-            background-color: var(--accent-emerald);
+        .add-to-cart-btn:hover {
+            background: var(--primary-navy);
+            color: #ffffff;
+        }
+
+        /* Sliding Cart Drawer Mechanics Layout */
+        .cart-drawer-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(10, 25, 47, 0.6);
+            backdrop-filter: blur(4px);
+            z-index: 1000;
+            display: none;
+        }
+
+        .cart-drawer {
+            position: fixed;
+            top: 0; right: -420px; width: 100%; max-width: 420px; height: 100%;
+            background: #ffffff;
+            box-shadow: -10px 0 30px rgba(10, 25, 47, 0.15);
+            z-index: 1001;
+            display: flex;
+            flex-direction: column;
+            transition: right 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cart-header {
+            padding: 24px;
+            border-bottom: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: var(--primary-navy);
+            color: #ffffff;
+        }
+
+        .cart-header h3 {
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-weight: 700;
+        }
+
+        .close-cart-btn {
+            background: transparent; border: none; color: white; font-size: 24px; cursor: pointer; transition: color 0.2s;
+        }
+        .close-cart-btn:hover { color: var(--accent-emerald); }
+
+        .cart-items-container {
+            flex: 1; padding: 24px; overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex; justify-content: space-between; align-items: center;
+            padding-bottom: 16px; margin-bottom: 16px; border-bottom: 1px solid var(--border-color);
+        }
+
+        .cart-item-details h5 { margin: 0 0 4px 0; font-size: 0.95rem; color: var(--primary-navy); font-weight: 700; }
+        .cart-item-details span { font-size: 0.85rem; color: #64748B; font-weight: 600; }
+
+        .remove-item-btn {
+            background: transparent; border: none; color: #EF4444; cursor: pointer; font-size: 0.8rem; font-weight: 600; text-transform: uppercase;
+        }
+        .remove-item-btn:hover { text-decoration: underline; }
+
+        .cart-footer {
+            padding: 24px; border-top: 1px solid var(--border-color); background: var(--bg-light);
+        }
+
+        .cart-total-row {
+            display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 20px; font-size: 1.05rem; color: var(--primary-navy);
+        }
+
+        .checkout-now-btn {
+            width: 100%; background: var(--accent-emerald); color: white; border: none; padding: 14px;
+            border-radius: 6px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; cursor: pointer; font-size: 0.95rem; transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+        }
+        .checkout-now-btn:hover {
             transform: translateY(-1px);
-            box-shadow: 0 6px 15px rgba(16, 185, 129, 0.25);
+            box-shadow: 0 6px 18px rgba(16, 185, 129, 0.3);
         }
 
         /* Footer */
@@ -213,9 +291,10 @@
 
         @media (max-width: 768px) {
             .logo { font-size: 2.6rem; letter-spacing: 0.25em; }
-            .showcase-title { font-size: 2rem; }
             .main-nav ul { gap: 15px; }
             .main-nav a { font-size: 0.85rem; }
+            .store-filter-bar { flex-direction: column; align-items: stretch; }
+            .cart-toggle-btn { text-align: center; }
         }
     </style>
 </head>
@@ -239,39 +318,48 @@
         </div>
     </header>
 
-    <!-- Attractive Placeholder Marketplace Grid -->
+    <!-- Main E-Commerce Content Context Bracket -->
     <main class="container">
-        <section class="products-showcase">
-            <div class="badge-coming">Pipeline Integration</div>
-            <h1 class="showcase-title">Curated Marketplace Coming Soon</h1>
-            <p class="showcase-desc">We are currently integrating automated inventory pipelines and sync matrix architectures with international marketplaces to construct a seamless distribution arena.</p>
-            
-            <div class="preview-grid">
-                <!-- Segment 1 -->
-                <div class="preview-card">
-                    <div class="icon-box">📦</div>
-                    <h3>Wholesale Trade Sourcing</h3>
-                    <p>Bulk tier allocations engineered straight from verifiable multi-national manufacturing facilities.</p>
-                </div>
+        <!-- Search and Sort Interface Strip -->
+        <div class="store-filter-bar">
+            <input type="text" id="search-input" placeholder="Search by product name or SKU..." oninput="filterProducts()">
+            <select id="category-filter" onchange="filterProducts()">
+                <option value="all">All Product Sectors</option>
+                <option value="electronics">Electronics & IoT</option>
+                <option value="solar">Solar Energy Solutions</option>
+                <option value="hardware">Industrial Hardware</option>
+            </select>
+            <button class="cart-toggle-btn" onclick="toggleCart(true)">
+                🛒 Cart (<span id="cart-count-badge">0</span>)
+            </button>
+        </div>
 
-                <!-- Segment 2 -->
-                <div class="preview-card">
-                    <div class="icon-box">⚡</div>
-                    <h3>E-Commerce Retail Hubs</h3>
-                    <p>High-demand consumer products synchronized dynamically for distribution across key retail pipelines.</p>
-                </div>
-
-                <!-- Segment 3 -->
-                <div class="preview-card">
-                    <div class="icon-box">🛡️</div>
-                    <h3>Verified Quality Lines</h3>
-                    <p>Strictly inspected supply goods complying fully with cross-border compliance auditing standards.</p>
-                </div>
-            </div>
-
-            <a href="/contact/" class="btn-notify">Inquire For Wholesale Procurement</a>
-        </section>
+        <!-- Dynamic Product Injection Target Grid -->
+        <div class="product-grid" id="product-display-grid">
+            <!-- JavaScript dynamically injects inventory models here -->
+        </div>
     </main>
+
+    <!-- Sliding E-Commerce Cart Drawer Overlays -->
+    <div class="cart-drawer-overlay" id="cart-overlay" onclick="toggleCart(false)"></div>
+    <div class="cart-drawer" id="cart-drawer">
+        <div class="cart-header">
+            <h3>Your Cart</h3>
+            <button class="close-cart-btn" onclick="toggleCart(false)">✕</button>
+        </div>
+        
+        <div class="cart-items-container" id="cart-items-list">
+            <!-- Active cart item rows render here -->
+        </div>
+
+        <div class="cart-footer">
+            <div class="cart-total-row">
+                <span>Estimated Total:</span>
+                <span id="cart-total-price">₹0.00 / $0.00</span>
+            </div>
+            <button class="checkout-now-btn" onclick="proceedToCheckout()">Proceed to Checkout</button>
+        </div>
+    </div>
 
     <!-- Footer -->
     <footer>
@@ -280,5 +368,119 @@
         </div>
     </footer>
 
+    <!-- Local Storage E-Commerce Sync Execution Scripts -->
+    <script>
+        // Mock inventory schema configuration matrix matching upcoming database schemas
+        const productInventory = [
+            { id: "P001", sku: "JSD-EL-01", name: "Premium Smart Multimeter", category: "electronics", priceINR: 4500, priceUSD: 55, img: "https://via.placeholder.com/200" },
+            { id: "P002", sku: "JSD-SL-09", name: "NEMA Solar Enclosure Box", category: "solar", priceINR: 8200, priceUSD: 99, img: "https://via.placeholder.com/200" },
+            { id: "P003", sku: "JSD-HD-04", name: "Industrial Micro-Controller Node", category: "hardware", priceINR: 6100, priceUSD: 75, img: "https://via.placeholder.com/200" }
+        ];
+
+        let globalCart = JSON.parse(localStorage.getItem('jesda_cart')) || [];
+
+        function renderStorefront() {
+            const grid = document.getElementById('product-display-grid');
+            grid.innerHTML = productInventory.map(prod => `
+                <div class="product-card">
+                    <div>
+                        <img src="${prod.img}" alt="${prod.name}">
+                        <div class="sku-text">SKU: ${prod.sku}</div>
+                        <h4>${prod.name}</h4>
+                    </div>
+                    <div>
+                        <div class="price-row">₹${prod.priceINR.toLocaleString()} / $${prod.priceUSD}</div>
+                        <button class="add-to-cart-btn" onclick="addToCart('${prod.id}')">Add To Cart</button>
+                    </div>
+                </div>
+            `).join('');
+            updateCartUI();
+        }
+
+        function addToCart(productId) {
+            const matchedItem = productInventory.find(p => p.id === productId);
+            const contextItem = globalCart.find(item => item.id === productId);
+
+            if (contextItem) {
+                contextItem.quantity += 1;
+            } else {
+                globalCart.push({ ...matchedItem, quantity: 1 });
+            }
+            
+            saveAndSyncCart();
+            toggleCart(true); // Automatically slide open cart view to confirm action
+        }
+
+        function removeCartItem(productId) {
+            globalCart = globalCart.filter(item => item.id !== productId);
+            saveAndSyncCart();
+        }
+
+        function saveAndSyncCart() {
+            localStorage.setItem('jesda_cart', JSON.stringify(globalCart));
+            updateCartUI();
+        }
+
+        function updateCartUI() {
+            const totalCount = globalCart.reduce((acc, current) => acc + current.quantity, 0);
+            document.getElementById('cart-count-badge').innerText = totalCount;
+
+            const listElement = document.getElementById('cart-items-list');
+            if (globalCart.length === 0) {
+                listElement.innerHTML = `<p style="color:#64748B; text-align:center; margin-top:40px; font-weight:600;">Your cart is currently empty.</p>`;
+                document.getElementById('cart-total-price').innerText = "₹0.00 / $0.00";
+                return;
+            }
+
+            let rawINR = 0; let rawUSD = 0;
+            listElement.innerHTML = globalCart.map(item => {
+                rawINR += (item.priceINR * item.quantity);
+                rawUSD += (item.priceUSD * item.quantity);
+                return `
+                    <div class="cart-item">
+                        <div class="cart-item-details">
+                            <h5>${item.name}</h5>
+                            <span>${item.quantity} × ₹${item.priceINR.toLocaleString()} / $${item.priceUSD}</span>
+                        </div>
+                        <button class="remove-item-btn" onclick="removeCartItem('${item.id}')">Remove</button>
+                    </div>
+                `;
+            }).join('');
+
+            document.getElementById('cart-total-price').innerText = `₹${rawINR.toLocaleString()} / $${rawUSD}`;
+        }
+
+        function toggleCart(isOpen) {
+            const drawer = document.getElementById('cart-drawer');
+            const overlay = document.getElementById('cart-overlay');
+            if (isOpen) {
+                drawer.style.right = "0px";
+                overlay.style.display = "block";
+            } else {
+                drawer.style.right = "-420px";
+                overlay.style.display = "none";
+            }
+        }
+
+        function filterProducts() {
+            const query = document.getElementById('search-input').value.toLowerCase();
+            const targetCat = document.getElementById('category-filter').value;
+            const cards = document.querySelectorAll('.product-card');
+
+            productInventory.forEach((prod, index) => {
+                const matchesSearch = prod.name.toLowerCase().includes(query) || prod.sku.toLowerCase().includes(query);
+                const matchesCategory = targetCat === 'all' || prod.category === targetCat;
+                
+                cards[index].style.display = (matchesSearch && matchesCategory) ? "flex" : "none";
+            });
+        }
+
+        function proceedToCheckout() {
+            if(globalCart.length === 0) return;
+            alert("Checkout route selected! Ready to connect payment validation parameters.");
+        }
+
+        document.addEventListener("DOMContentLoaded", renderStorefront);
+    </script>
 </body>
 </html>
