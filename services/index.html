@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Services | JESDA Group</title>
+    <title>Our Services | JESDA GROUP</title>
+    <meta name="description" content="JESDA GROUP PRIVATE LIMITED services — sourcing, supply chain, e-commerce marketplace solutions, business support, and electrical/plumbing services from Kerala, India.">
+    <link rel="canonical" href="https://jesdagroup.com/services/">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <meta property="og:title" content="Our Services | JESDA GROUP">
+    <meta property="og:description" content="Trading, sourcing, supply chain, business support, and technical services from Kerala, India.">
+    <meta property="og:image" content="https://jesdagroup.com/images/og-image.jpg">
+    <meta property="og:url" content="https://jesdagroup.com/services/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <style>
         :root {
             --primary-navy: #0A192F;      
@@ -80,6 +89,18 @@
             color: var(--accent-emerald);
         }
 
+        /* Page Intro */
+        .page-intro {
+            text-align: center;
+            padding: 60px 0 10px 0;
+        }
+        .page-intro p {
+            color: #475569;
+            font-size: 1.1rem;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
         /* Section Headings */
         .section-title {
             text-align: center;
@@ -114,6 +135,8 @@
             box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
             overflow: hidden;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
         }
         
         .service-card.priority-one {
@@ -139,6 +162,9 @@
         
         .card-content {
             padding: 30px 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
         .card-content h3 {
             font-size: 1.35rem;
@@ -150,6 +176,45 @@
             color: #475569;
             font-size: 1rem;
         }
+        .card-content ul {
+            margin-top: 16px;
+            padding-left: 20px;
+            color: #475569;
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+        .card-content ul li::marker {
+            color: var(--accent-emerald);
+        }
+
+        /* Closing CTA */
+        .cta-section {
+            text-align: center;
+            padding: 0 0 90px 0;
+        }
+        .cta-section p {
+            color: #475569;
+            margin-bottom: 22px;
+            font-size: 1.05rem;
+        }
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--accent-emerald);
+            color: #ffffff;
+            padding: 14px 36px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.25);
+        }
+        .cta-btn:hover {
+            background-color: #059669;
+            transform: translateY(-1px);
+        }
 
         /* Footer */
         footer {
@@ -160,10 +225,22 @@
             font-size: 0.9rem;
             letter-spacing: 0.05em;
         }
+        footer .footer-company {
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            color: #ffffff;
+            margin-bottom: 10px;
+            font-size: 1rem;
+        }
+        footer .footer-details {
+            font-size: 0.85rem;
+            margin-bottom: 14px;
+            color: #CBD5E1;
+        }
 
         @media (max-width: 768px) {
             .logo { font-size: 2.6rem; letter-spacing: 0.25em; }
-            .service-card { padding: 30px 20px; }
+            .service-card { padding: 0; }
             .main-nav ul { gap: 15px; }
             .main-nav a { font-size: 0.85rem; }
         }
@@ -189,9 +266,14 @@
         </div>
     </header>
 
-    <!-- Core Services Section -->
+    <!-- Page Intro -->
+    <div class="container page-intro">
+        <p>From international sourcing and supply chain management to on-ground technical services in Kerala — here's a detailed look at what JESDA GROUP delivers.</p>
+    </div>
+
+    <!-- International Trade & Business Solutions -->
     <section class="container">
-        <h2 class="section-title">Our Service Architecture</h2>
+        <h2 class="section-title">International Trade & Business Solutions</h2>
         <div class="services-grid">
             
             <!-- Service 1: E-Commerce Retail Trading -->
@@ -199,7 +281,13 @@
                 <img class="card-img" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=600&q=80" alt="E-Commerce Architecture Analytics">
                 <div class="card-content">
                     <h3>E-Commerce Marketplace Solutions</h3>
-                    <p>Driving data-backed B2C and B2B market penetration across dominant digital e-commerce platforms (including Amazon and Flipkart) and international retail networks.</p>
+                    <p>Driving data-backed B2C and B2B market penetration across dominant digital e-commerce platforms and international retail networks.</p>
+                    <ul>
+                        <li>Marketplace listing & optimization (Amazon, Flipkart)</li>
+                        <li>Own-brand product launches and dropshipping</li>
+                        <li>Pricing strategy across INR/USD markets</li>
+                        <li>Order fulfillment coordination</li>
+                    </ul>
                 </div>
             </div>
 
@@ -208,7 +296,13 @@
                 <img class="card-img" src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&w=600&q=80" alt="Global Supply Chain Pipeline Warehouse Sourcing">
                 <div class="card-content">
                     <h3>Sourcing & Supply Chain Consultancy</h3>
-                    <p>Facilitating end-to-end international procurement networks. We implement process optimization, vendor coordination, and strict quality auditing metrics to protect margins.</p>
+                    <p>Facilitating end-to-end international procurement networks with strict quality auditing to protect margins.</p>
+                    <ul>
+                        <li>Vendor identification & vetting across India</li>
+                        <li>Quality auditing before dispatch</li>
+                        <li>Price negotiation & cost optimization</li>
+                        <li>Import/export documentation support</li>
+                    </ul>
                 </div>
             </div>
 
@@ -217,17 +311,70 @@
                 <img class="card-img" src="https://images.unsplash.com/photo-1494412519320-aa613dfb7738?auto=format&fit=crop&w=600&q=80" alt="Freight Terminal Logistics Coordination Sourcing">
                 <div class="card-content">
                     <h3>Shipping & Logistics Orchestration</h3>
-                    <p>Streamlining complex trade pathways, managing freight forwarding logistics, and coordinating product fulfillment channels with zero-waste operational efficiency.</p>
+                    <p>Streamlining complex trade pathways and coordinating product fulfillment channels with zero-waste operational efficiency.</p>
+                    <ul>
+                        <li>Freight forwarding coordination</li>
+                        <li>Shipment tracking & documentation</li>
+                        <li>Warehouse & vendor coordination</li>
+                        <li>Cross-border compliance support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Service 4: Business Support Services -->
+            <div class="service-card">
+                <img class="card-img" src="/images/business-support.jpg" alt="Business Support Services">
+                <div class="card-content">
+                    <h3>Business Support Services</h3>
+                    <p>Remote virtual assistance, customer care, HR support, recruitment, and logistics coordination for businesses across GCC and India.</p>
+                    <ul>
+                        <li>Virtual assistance (email, scheduling, admin)</li>
+                        <li>Customer care & order support</li>
+                        <li>HR assistance & onboarding coordination</li>
+                        <li>Recruitment sourcing & screening</li>
+                        <li>Logistics coordination for e-commerce/trading clients</li>
+                    </ul>
                 </div>
             </div>
             
         </div>
     </section>
 
+    <!-- Local Kerala Services -->
+    <section class="container">
+        <h2 class="section-title">Local Kerala Services</h2>
+        <div class="services-grid">
+
+            <!-- Electrical & Plumbing Services -->
+            <div class="service-card">
+                <img class="card-img" src="/images/electrical-plumbing.jpg" alt="Electrical and Plumbing Services">
+                <div class="card-content">
+                    <h3>Electrical & Plumbing Services</h3>
+                    <p>Licensed, GCC-experienced electrical wiring and plumbing installation, repair, and maintenance for homes and businesses across Kerala.</p>
+                    <ul>
+                        <li>Full house wiring & electrical installation</li>
+                        <li>Plumbing installation & repair</li>
+                        <li>Maintenance for NRI-owned homes</li>
+                        <li>Technical quality checks for traded electrical/plumbing goods</li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Closing CTA -->
+    <section class="container cta-section">
+        <p>Ready to discuss your requirements?</p>
+        <a href="/contact/" class="cta-btn">Get in Touch</a>
+    </section>
+
     <!-- Footer -->
     <footer>
         <div class="container">
-            <p>&copy; 2026 JESDA. All Rights Reserved.</p>
+            <p class="footer-company">JESDA GROUP PRIVATE LIMITED</p>
+            <p class="footer-details">Kerala, India &nbsp;|&nbsp; +91-XXXXXXXXXX &nbsp;|&nbsp; Daniel@jesdagroup.com</p>
+            <p>&copy; 2026 JESDA GROUP PRIVATE LIMITED. All Rights Reserved.</p>
         </div>
     </footer>
 
