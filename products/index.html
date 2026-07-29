@@ -3,7 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>JESDA - Product Catalog</title>
+    <title>Product Catalog | JESDA GROUP</title>
+    <meta name="description" content="Browse JESDA GROUP's product catalog — home & living, food & grocery, handicrafts, electronics, and general trading items, priced in INR and USD.">
+    <link rel="canonical" href="https://jesdagroup.com/products/">
+    <link rel="icon" type="image/png" href="/images/favicon.png">
+    <meta property="og:title" content="Product Catalog | JESDA GROUP">
+    <meta property="og:description" content="Browse JESDA GROUP's trading catalog, priced in INR and USD.">
+    <meta property="og:image" content="https://jesdagroup.com/images/og-image.jpg">
+    <meta property="og:url" content="https://jesdagroup.com/products/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         .strike-through { text-decoration: line-through; }
@@ -14,9 +23,15 @@
         .cart-drawer.open {
             transform: translateX(0);
         }
-        /* Custom deep navy matching the site brand matrix */
-        .bg-brand-navy { color: #ffffff; background-color: #0b1a30; }
-        .text-brand-green { color: #10b981; }
+        /* Brand colors matched to main site identity */
+        .bg-brand-navy { color: #ffffff; background-color: #0A192F; }
+        .text-brand-green { color: #10B981; }
+        .bg-brand-green-btn { background-color: #10B981; color: #ffffff; }
+        .bg-brand-green-btn:hover { background-color: #059669; }
+        .bg-brand-navy-btn { background-color: #0A192F; color: #ffffff; }
+        .bg-brand-navy-btn:hover { background-color: #172A45; }
+        .border-brand-green { border-color: #10B981; }
+        .text-brand-navy { color: #0A192F; }
     </style>
 </head>
 <body class="bg-gray-50 font-sans text-gray-900 overflow-x-hidden">
@@ -45,7 +60,7 @@
         <!-- System Controls Floating Tray (Currency Switching & Active Cart Actions) -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between border-t border-gray-800 pt-3">
             <div class="flex items-center space-x-2 bg-gray-900/60 p-1 rounded-lg border border-gray-800">
-                <button id="btn-INR" onclick="setCurrency('INR')" class="px-3 py-1 rounded-md text-xs font-bold transition bg-blue-600 text-white shadow">INR (₹)</button>
+                <button id="btn-INR" onclick="setCurrency('INR')" class="px-3 py-1 rounded-md text-xs font-bold transition bg-brand-green-btn shadow">INR (₹)</button>
                 <button id="btn-USD" onclick="setCurrency('USD')" class="px-3 py-1 rounded-md text-xs font-bold transition text-gray-400 hover:text-white">USD ($)</button>
             </div>
 
@@ -77,7 +92,7 @@
                 <span class="text-sm font-semibold text-gray-500">Subtotal Amount:</span>
                 <span id="cart-total-price" class="text-xl font-extrabold text-gray-900">₹0</span>
             </div>
-            <button onclick="proceedToWhatsAppCheckout()" class="w-full bg-blue-600 hover:bg-blue-700 text-white text-center font-bold py-3 rounded-xl transition shadow">
+            <button onclick="proceedToWhatsAppCheckout()" class="w-full bg-brand-green-btn text-center font-bold py-3 rounded-xl transition shadow">
                 Proceed to WhatsApp Order
             </button>
         </div>
@@ -88,14 +103,16 @@
         <div class="mb-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-b border-gray-200 pb-6">
             <div>
                 <h1 class="text-2xl font-bold tracking-tight text-gray-900">Our Products</h1>
-                <p class="mt-1 text-xs text-gray-500">Live synchronized procurement and operational components inventory.</p>
+                <p class="mt-1 text-xs text-gray-500">Sourced, quality-checked goods available for domestic and international order.</p>
             </div>
             
             <div class="flex flex-wrap gap-2">
-                <button onclick="filterCategory('all')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-blue-600 text-white transition">All</button>
-                <button onclick="filterCategory('electronics')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Electronics</button>
-                <button onclick="filterCategory('solar')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Solar</button>
-                <button onclick="filterCategory('hardware')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Hardware</button>
+                <button onclick="filterCategory('all')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-green-btn transition">All</button>
+                <button onclick="filterCategory('home-living')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Home & Living</button>
+                <button onclick="filterCategory('food-grocery')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Food & Grocery</button>
+                <button onclick="filterCategory('handicrafts')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Handicrafts & Decor</button>
+                <button onclick="filterCategory('electronics-hardware')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Electronics & Hardware</button>
+                <button onclick="filterCategory('general')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">General Trading</button>
             </div>
         </div>
 
@@ -103,6 +120,15 @@
             <!-- Items injection engine space -->
         </div>
     </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-navy pt-2">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
+            <p class="font-bold tracking-widest text-sm mb-2">JESDA GROUP PRIVATE LIMITED</p>
+            <p class="text-xs text-gray-400 mb-3">Kerala, India &nbsp;|&nbsp; +9-ComingSoon &nbsp;|&nbsp; Daniel@jesdagroup.com</p>
+            <p class="text-xs text-gray-500">&copy; 2026 JESDA GROUP PRIVATE LIMITED. All Rights Reserved.</p>
+        </div>
+    </footer>
 
     <script>
         const apiEndpoint = "https://jesda-products-api.jessdaniel-j.workers.dev";
@@ -123,7 +149,7 @@
             } else {
                 document.getElementById('product-display-grid').innerHTML = `
                     <div class="col-span-full text-center py-20 text-gray-400 text-sm font-medium">
-                        Synchronizing secure data matrix...
+                        Loading products...
                     </div>`;
             }
             fetchLiveInventory();
@@ -145,7 +171,7 @@
                 if (productInventory.length === 0) {
                     document.getElementById('product-display-grid').innerHTML = `
                         <p class="col-span-full text-center text-red-500 text-sm font-semibold py-12">
-                            Unable to securely synchronize database tables. Please refresh or check connection.
+                            Unable to load products right now. Please refresh or check your connection.
                         </p>`;
                 }
             }
@@ -183,10 +209,10 @@
                         <div class="p-6 flex-1 flex flex-col justify-between">
                             <div>
                                 <div class="flex items-center justify-between gap-2 mb-2">
-                                    <span class="text-[10px] font-bold uppercase tracking-wider text-blue-600 bg-blue-50 px-2.5 py-0.5 rounded-full">${product.category}</span>
+                                    <span class="text-[10px] font-bold uppercase tracking-wider text-brand-navy bg-gray-100 px-2.5 py-0.5 rounded-full">${product.category}</span>
                                     <span class="text-xs text-gray-400 font-mono">${product.sku}</span>
                                 </div>
-                                <h3 class="text-base font-bold text-gray-900 group-hover:text-blue-600 transition duration-150">${product.name}</h3>
+                                <h3 class="text-base font-bold text-gray-900 group-hover:text-brand-navy transition duration-150">${product.name}</h3>
                             </div>
                             
                             <div class="mt-6 pt-4 border-t border-gray-100">
@@ -201,7 +227,7 @@
                                         <input type="number" id="qty-${product.id}" value="1" min="1" class="w-8 text-center bg-transparent text-xs font-bold focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
                                         <button onclick="adjustInputQty('${product.id}', 1)" class="px-2 py-1 text-gray-500 hover:text-gray-800 font-bold text-sm">+</button>
                                     </div>
-                                    <button onclick="addToCart('${product.id}')" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold py-2 px-3 rounded-lg transition shadow-sm">
+                                    <button onclick="addToCart('${product.id}')" class="flex-1 bg-brand-green-btn text-xs font-bold py-2 px-3 rounded-lg transition shadow-sm">
                                         Add to Cart
                                     </button>
                                 </div>
@@ -309,14 +335,14 @@
                 messageOrderLines += `    Total: ${symbol}${itemTotal.toLocaleString()}\n\n`;
             });
 
-            let WhatsAppText = `*JESDA - NEW ORDER INQUIRY*\n`;
+            let WhatsAppText = `*JESDA GROUP - NEW ORDER INQUIRY*\n`;
             WhatsAppText += `=========================\n\n`;
             WhatsAppText += `Hello JESDA Operations Team,\n\n`;
-            WhatsAppText += `I would like to place an order for the following components:\n\n`;
+            WhatsAppText += `I would like to place an order for the following items:\n\n`;
             WhatsAppText += messageOrderLines;
             WhatsAppText += `=========================\n`;
             WhatsAppText += `*GRAND TOTAL: ${symbol}${totalAmount.toLocaleString()} (${currentCurrency})*\n\n`;
-            WhatsAppText += `Please confirm availability and sharing logistics processing timelines.`;
+            WhatsAppText += `Please confirm availability and share logistics/processing timelines.`;
 
             const secureEncodedURL = `https://api.whatsapp.com/send?phone=${businessPhoneNumber}&text=${encodeURIComponent(WhatsAppText)}`;
             window.open(secureEncodedURL, '_blank');
@@ -342,10 +368,10 @@
             const btnUSD = document.getElementById('btn-USD');
 
             if (currency === 'INR') {
-                btnINR.className = "px-3 py-1 rounded-md text-xs font-bold transition bg-blue-600 text-white shadow";
+                btnINR.className = "px-3 py-1 rounded-md text-xs font-bold transition bg-brand-green-btn shadow";
                 btnUSD.className = "px-3 py-1 rounded-md text-xs font-bold transition text-gray-400 hover:text-white";
             } else {
-                btnUSD.className = "px-3 py-1 rounded-md text-xs font-bold transition bg-blue-600 text-white shadow";
+                btnUSD.className = "px-3 py-1 rounded-md text-xs font-bold transition bg-brand-green-btn shadow";
                 btnINR.className = "px-3 py-1 rounded-md text-xs font-bold transition text-gray-400 hover:text-white";
             }
             renderStorefront();
@@ -355,8 +381,9 @@
         function filterCategory(category) {
             currentCategory = category;
             document.querySelectorAll('.cat-btn').forEach(btn => {
-                if (btn.textContent.toLowerCase() === category.toLowerCase() || (category === 'all' && btn.textContent === 'All')) {
-                    btn.className = "cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-blue-600 text-white shadow-sm transition";
+                const btnCategory = btn.getAttribute('onclick').match(/filterCategory\('(.+)'\)/)[1];
+                if (btnCategory === category) {
+                    btn.className = "cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-green-btn shadow-sm transition";
                 } else {
                     btn.className = "cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition";
                 }
