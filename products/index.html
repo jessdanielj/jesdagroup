@@ -24,7 +24,6 @@
         .cart-drawer.open {
             transform: translateX(0);
         }
-        /* Brand colors matched to main site identity */
         .bg-brand-navy { color: #ffffff; background-color: #0A192F; }
         .text-brand-green { color: #10B981; }
         .bg-brand-green-btn { background-color: #10B981; color: #ffffff; }
@@ -37,9 +36,9 @@
 </head>
 <body class="bg-gray-50 font-sans text-gray-900 overflow-x-hidden">
 
+    <!-- Header Block -->
     <header class="bg-brand-navy shadow-md sticky top-0 z-40 pb-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex flex-col items-center text-center">
-            
             <a href="../" class="text-3xl font-bold tracking-[0.25em] text-white hover:text-gray-200 transition">
                 JESDA
             </a>
@@ -70,6 +69,7 @@
         </div>
     </header>
 
+    <!-- Side View Checkout Sliding Panel -->
     <div id="cart-overlay" onclick="toggleCart(false)" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity opacity-0"></div>
     <div id="cart-sidebar" class="cart-drawer fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 flex flex-col">
         <div class="p-6 border-b border-gray-100 flex items-center justify-between bg-gray-50">
@@ -94,6 +94,7 @@
         </div>
     </div>
 
+    <!-- Main Grid Framework -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="mb-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-b border-gray-200 pb-6">
             <div>
@@ -102,19 +103,21 @@
             </div>
             
             <div class="flex flex-wrap gap-2">
-                <button onclick="filterCategory('all')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-green-btn transition">All</button>
-                <button onclick="filterCategory('home-living')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Home & Living</button>
-                <button onclick="filterCategory('food-grocery')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Food & Grocery</button>
-                <button onclick="filterCategory('handicrafts')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Handicrafts & Decor</button>
-                <button onclick="filterCategory('electronics-hardware')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Electronics & Hardware</button>
-                <button onclick="filterCategory('general')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">General Trading</button>
+                <button data-cat="all" onclick="filterCategory('all')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-green-btn transition">All</button>
+                <button data-cat="home-living" onclick="filterCategory('home-living')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Home & Living</button>
+                <button data-cat="food-grocery" onclick="filterCategory('food-grocery')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Food & Grocery</button>
+                <button data-cat="handicrafts" onclick="filterCategory('handicrafts')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Handicrafts & Decor</button>
+                <button data-cat="electronics-hardware" onclick="filterCategory('electronics-hardware')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">Electronics & Hardware</button>
+                <button data-cat="general" onclick="filterCategory('general')" class="cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition">General Trading</button>
             </div>
         </div>
 
         <div id="product-display-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            </div>
+            <!-- Items injection space -->
+        </div>
     </main>
 
+    <!-- Footer -->
     <footer class="bg-brand-navy pt-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
             <p class="font-bold tracking-widest text-sm mb-2">JESDA GROUP PRIVATE LIMITED</p>
@@ -131,14 +134,15 @@
         let currentCurrency = 'INR';
         let currentCategory = 'all';
 
-        // Initialize Lifecycle with Cache Verification
         document.addEventListener("DOMContentLoaded", () => {
             const cachedData = localStorage.getItem('jesda_inventory_cache');
             if (cachedData) {
                 try {
                     productInventory = JSON.parse(cachedData);
                     renderStorefront();
-                } catch(e) { console.error("Cache read fail", e); }
+                } catch(e) { 
+                    console.error("Cache read fail", e); 
+                }
             } else {
                 document.getElementById('product-display-grid').innerHTML = `
                     <div class="col-span-full text-center py-20 text-gray-400 text-sm font-medium">
@@ -155,8 +159,6 @@
                 
                 const freshData = await response.json();
                 productInventory = freshData;
-                
-                // Write into client cache matrix to avoid future loading loops
                 localStorage.setItem('jesda_inventory_cache', JSON.stringify(freshData));
                 renderStorefront();
             } catch (error) {
@@ -175,7 +177,7 @@
             grid.innerHTML = '';
 
             const filteredProducts = productInventory.filter(p => 
-                currentCategory === 'all' || p.category.toLowerCase() === currentCategory.toLowerCase()
+                currentCategory === 'all' || (p.category && p.category.toLowerCase() === currentCategory.toLowerCase())
             );
 
             if (filteredProducts.length === 0) {
@@ -189,7 +191,7 @@
                 const symbol = currentCurrency === 'INR' ? '₹' : '$';
                 const hasDiscount = originalPrice > price;
 
-                const imagePath = product.img.startsWith('/') ? product.img.substring(1) : product.img;
+                const imagePath = product.img ? (product.img.startsWith('/') ? product.img.substring(1) : product.img) : '';
                 const finalImgSrc = `../${imagePath}`;
 
                 const cardHtml = `
@@ -198,7 +200,7 @@
                             <img src="${finalImgSrc}" alt="${product.name}" 
                                  width="600" height="400" loading="lazy"
                                  class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
-                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'absolute inset-0 flex items-center justify-center text-gray-400 text-xs font-mono bg-gray-100\'>Missing: ${imagePath}</div>';">
+                                 onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\\'absolute inset-0 flex items-center justify-center text-gray-400 text-xs font-mono bg-gray-100\\'>Missing: ${imagePath}</div>';">
                         </div>
                         <div class="p-6 flex-1 flex flex-col justify-between">
                             <div>
@@ -211,7 +213,8 @@
                             
                             <div class="mt-6 pt-4 border-t border-gray-100">
                                 <div class="flex items-baseline gap-2 mb-4">
-                                    <span class="text-xl font-extrabold text-gray-900">${symbol}${price.toLocaleString()}</span>${hasDiscount ? `<span class="text-xs text-gray-400 strike-through font-medium">${symbol}${originalPrice.toLocaleString()}</span>` : ''}
+                                    <span class="text-xl font-extrabold text-gray-900">${symbol}${price.toLocaleString()}</span>
+                                    ${hasDiscount ? `<span class="text-xs text-gray-400 strike-through font-medium">${symbol}${originalPrice.toLocaleString()}</span>` : ''}
                                 </div>
 
                                 <div class="flex items-center space-x-2">
@@ -285,8 +288,101 @@
                     <div class="flex items-center justify-between border-b border-gray-100 pb-3">
                         <div class="flex-1 min-w-0 pr-2">
                             <h4 class="text-xs font-bold text-gray-900 truncate">${item.name}</h4>
-                            <p class="text-[11px] text-gray-500 mt-0.5">${symbol}${price.toLocaleString()} ×${item.quantity}</p>
+                            <p class="text-[11px] text-gray-500 mt-0.5">${symbol}${price.toLocaleString()} × ${item.quantity}</p>
                         </div>
                         <div class="flex items-center space-x-2">
                             <span class="text-xs font-extrabold text-gray-900">${symbol}${itemTotal.toLocaleString()}</span>
-                            <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 text-
+                            <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 text-[10px] font-bold">Remove</button>
+                        </div>
+                    </div>`);
+            });
+
+            cartCountElement.textContent = totalCount;
+            cartCountElement.classList.remove('hidden');
+            totalPriceElement.textContent = `${symbol}${totalPrice.toLocaleString()}`;
+        }
+
+        function removeFromCart(productId) {
+            shoppingCart = shoppingCart.filter(item => item.id !== productId);
+            updateCartUI();
+        }
+
+        function proceedToWhatsAppCheckout() {
+            if (shoppingCart.length === 0) {
+                alert("Your cart is empty.");
+                return;
+            }
+
+            const businessPhoneNumber = "966534657213"; 
+            const symbol = currentCurrency === 'INR' ? '₹' : '$';
+            
+            let totalAmount = 0;
+            let messageOrderLines = "";
+
+            shoppingCart.forEach((item, index) => {
+                const price = currentCurrency === 'INR' ? item.priceINR : item.priceUSD;
+                const itemTotal = price * item.quantity;
+                totalAmount += itemTotal;
+                
+                messageOrderLines += `${index + 1}. *${item.name}* (${item.sku})\n`;
+                messageOrderLines += `    Qty: ${item.quantity} × ${symbol}${price.toLocaleString()}\n`;
+                messageOrderLines += `    Total: ${symbol}${itemTotal.toLocaleString()}\n\n`;
+            });
+
+            let WhatsAppText = `*JESDA GROUP - NEW ORDER INQUIRY*\n`;
+            WhatsAppText += `=========================\n\n`;
+            WhatsAppText += `Hello JESDA Operations Team,\n\n`;
+            WhatsAppText += `I would like to place an order for the following items:\n\n`;
+            WhatsAppText += messageOrderLines;
+            WhatsAppText += `=========================\n`;
+            WhatsAppText += `*GRAND TOTAL: ${symbol}${totalAmount.toLocaleString()} (${currentCurrency})*\n\n`;
+            WhatsAppText += `Please confirm availability and share logistics/processing timelines.`;
+
+            const secureEncodedURL = `https://api.whatsapp.com/send?phone=${businessPhoneNumber}&text=${encodeURIComponent(WhatsAppText)}`;
+            window.open(secureEncodedURL, '_blank');
+        }
+
+        function toggleCart(open) {
+            const sidebar = document.getElementById('cart-sidebar');
+            const overlay = document.getElementById('cart-overlay');
+            if (open) {
+                overlay.classList.remove('hidden');
+                setTimeout(() => { overlay.classList.add('opacity-100'); sidebar.classList.add('open'); }, 10);
+            } else {
+                sidebar.classList.remove('open');
+                overlay.classList.remove('opacity-100');
+                setTimeout(() => overlay.classList.add('hidden'), 300);
+            }
+        }
+
+        function setCurrency(currency) {
+            currentCurrency = currency;
+            const btnINR = document.getElementById('btn-INR');
+            const btnUSD = document.getElementById('btn-USD');
+
+            if (currency === 'INR') {
+                btnINR.className = "px-3 py-1 rounded-md text-xs font-bold transition bg-brand-green-btn shadow";
+                btnUSD.className = "px-3 py-1 rounded-md text-xs font-bold transition text-gray-400 hover:text-white";
+            } else {
+                btnUSD.className = "px-3 py-1 rounded-md text-xs font-bold transition bg-brand-green-btn shadow";
+                btnINR.className = "px-3 py-1 rounded-md text-xs font-bold transition text-gray-400 hover:text-white";
+            }
+            renderStorefront();
+            updateCartUI();
+        }
+
+        function filterCategory(category) {
+            currentCategory = category;
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                const btnCategory = btn.getAttribute('data-cat');
+                if (btnCategory === category) {
+                    btn.className = "cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-green-btn shadow-sm transition";
+                } else {
+                    btn.className = "cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition";
+                }
+            });
+            renderStorefront();
+        }
+    </script>
+</body>
+</html>
