@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Product Catalog | JESDA GROUP</title>
+    <title>Global Product Sourcing & Wholesale Trading | JESDA GROUP</title>
     <meta name="description" content="Browse JESDA GROUP's product catalog — home & living, food & grocery, handicrafts, electronics, and general trading items, priced in INR and USD.">
     <link rel="canonical" href="https://jesdagroup.com/products/">
     <link rel="icon" type="image/png" href="/images/favicon.png">
-    <meta property="og:title" content="Product Catalog | JESDA GROUP">
+    <link rel="apple-touch-icon" href="/images/favicon.png">
+    <meta property="og:title" content="Global Product Sourcing & Wholesale Trading | JESDA GROUP">
     <meta property="og:description" content="Browse JESDA GROUP's trading catalog, priced in INR and USD.">
     <meta property="og:image" content="https://jesdagroup.com/images/og-image.jpg">
     <meta property="og:url" content="https://jesdagroup.com/products/">
@@ -36,11 +37,9 @@
 </head>
 <body class="bg-gray-50 font-sans text-gray-900 overflow-x-hidden">
 
-    <!-- Header Block (Matched to Corporate Identity Style Matrix) -->
     <header class="bg-brand-navy shadow-md sticky top-0 z-40 pb-4">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 flex flex-col items-center text-center">
             
-            <!-- Centered Header Logo Block -->
             <a href="../" class="text-3xl font-bold tracking-[0.25em] text-white hover:text-gray-200 transition">
                 JESDA
             </a>
@@ -48,7 +47,6 @@
                 Trading · Sourcing · Business Support
             </p>
 
-            <!-- Navigation Links Frame -->
             <nav class="flex space-x-6 text-xs uppercase tracking-widest font-semibold mb-4">
                 <a href="../" class="text-gray-400 hover:text-white transition">Home</a>
                 <a href="./" class="text-brand-green font-bold transition">Products</a>
@@ -57,14 +55,13 @@
             </nav>
         </div>
 
-        <!-- System Controls Floating Tray (Currency Switching & Active Cart Actions) -->
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between border-t border-gray-800 pt-3">
             <div class="flex items-center space-x-2 bg-gray-900/60 p-1 rounded-lg border border-gray-800">
                 <button id="btn-INR" onclick="setCurrency('INR')" class="px-3 py-1 rounded-md text-xs font-bold transition bg-brand-green-btn shadow">INR (₹)</button>
                 <button id="btn-USD" onclick="setCurrency('USD')" class="px-3 py-1 rounded-md text-xs font-bold transition text-gray-400 hover:text-white">USD ($)</button>
             </div>
 
-            <button onclick="toggleCart(true)" class="relative p-2 text-gray-400 hover:text-white transition focus:outline-none">
+            <button onclick="toggleCart(true)" class="relative p-2 text-gray-400 hover:text-white transition focus:outline-none" aria-label="Open Cart">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
                 </svg>
@@ -73,12 +70,11 @@
         </div>
     </header>
 
-    <!-- Side View Checkout Sliding Panel -->
     <div id="cart-overlay" onclick="toggleCart(false)" class="fixed inset-0 bg-black/50 z-50 hidden transition-opacity opacity-0"></div>
     <div id="cart-sidebar" class="cart-drawer fixed top-0 right-0 h-full w-full sm:w-96 bg-white shadow-2xl z-50 flex flex-col">
         <div class="p-6 border-b border-gray-100 flex items-center justify-between bg-gray-50">
             <h2 class="text-lg font-bold text-gray-900 tracking-tight">Your Cart</h2>
-            <button onclick="toggleCart(false)" class="p-2 text-gray-400 hover:text-gray-600 transition">
+            <button onclick="toggleCart(false)" class="p-2 text-gray-400 hover:text-gray-600 transition" aria-label="Close Cart">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                 </svg>
@@ -98,11 +94,10 @@
         </div>
     </div>
 
-    <!-- Product Catalog Main Grid Framework -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div class="mb-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 border-b border-gray-200 pb-6">
             <div>
-                <h1 class="text-2xl font-bold tracking-tight text-gray-900">Our Products</h1>
+                <h1 class="text-2xl font-bold tracking-tight text-gray-900">Global Product Sourcing & Wholesale Trading</h1>
                 <p class="mt-1 text-xs text-gray-500">Sourced, quality-checked goods available for domestic and international order.</p>
             </div>
             
@@ -117,15 +112,13 @@
         </div>
 
         <div id="product-display-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Items injection engine space -->
-        </div>
+            </div>
     </main>
 
-    <!-- Footer -->
     <footer class="bg-brand-navy pt-2">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-center">
             <p class="font-bold tracking-widest text-sm mb-2">JESDA GROUP PRIVATE LIMITED</p>
-            <p class="text-xs text-gray-400 mb-3">Kerala, India &nbsp;|&nbsp; +9-ComingSoon &nbsp;|&nbsp; Daniel@jesdagroup.com</p>
+            <p class="text-xs text-gray-400 mb-3">Kerala, India &nbsp;|&nbsp; +91-ComingSoon &nbsp;|&nbsp; Daniel@jesdagroup.com</p>
             <p class="text-xs text-gray-500">&copy; 2026 JESDA GROUP PRIVATE LIMITED. All Rights Reserved.</p>
         </div>
     </footer>
@@ -203,6 +196,7 @@
                     <div class="bg-white rounded-2xl border border-gray-200 shadow-sm overflow-hidden flex flex-col group hover:shadow-md transition duration-200">
                         <div class="aspect-video w-full bg-gray-100 overflow-hidden relative">
                             <img src="${finalImgSrc}" alt="${product.name}" 
+                                 width="600" height="400" loading="lazy"
                                  class="w-full h-full object-cover group-hover:scale-105 transition duration-300"
                                  onerror="this.onerror=null; this.parentElement.innerHTML='<div class=\'absolute inset-0 flex items-center justify-center text-gray-400 text-xs font-mono bg-gray-100\'>Missing: ${imagePath}</div>';">
                         </div>
@@ -217,15 +211,14 @@
                             
                             <div class="mt-6 pt-4 border-t border-gray-100">
                                 <div class="flex items-baseline gap-2 mb-4">
-                                    <span class="text-xl font-extrabold text-gray-900">${symbol}${price.toLocaleString()}</span>
-                                    ${hasDiscount ? `<span class="text-xs text-gray-400 strike-through font-medium">${symbol}${originalPrice.toLocaleString()}</span>` : ''}
+                                    <span class="text-xl font-extrabold text-gray-900">${symbol}${price.toLocaleString()}</span>${hasDiscount ? `<span class="text-xs text-gray-400 strike-through font-medium">${symbol}${originalPrice.toLocaleString()}</span>` : ''}
                                 </div>
 
                                 <div class="flex items-center space-x-2">
                                     <div class="flex items-center border border-gray-200 rounded-lg bg-gray-50 shadow-sm">
-                                        <button onclick="adjustInputQty('${product.id}', -1)" class="px-2 py-1 text-gray-500 hover:text-gray-800 font-bold text-sm">-</button>
-                                        <input type="number" id="qty-${product.id}" value="1" min="1" class="w-8 text-center bg-transparent text-xs font-bold focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none">
-                                        <button onclick="adjustInputQty('${product.id}', 1)" class="px-2 py-1 text-gray-500 hover:text-gray-800 font-bold text-sm">+</button>
+                                        <button onclick="adjustInputQty('${product.id}', -1)" class="px-2 py-1 text-gray-500 hover:text-gray-800 font-bold text-sm" aria-label="Decrease Quantity">-</button>
+                                        <input type="number" id="qty-${product.id}" value="1" min="1" class="w-8 text-center bg-transparent text-xs font-bold focus:outline-none [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none" aria-label="Quantity">
+                                        <button onclick="adjustInputQty('${product.id}', 1)" class="px-2 py-1 text-gray-500 hover:text-gray-800 font-bold text-sm" aria-label="Increase Quantity">+</button>
                                     </div>
                                     <button onclick="addToCart('${product.id}')" class="flex-1 bg-brand-green-btn text-xs font-bold py-2 px-3 rounded-lg transition shadow-sm">
                                         Add to Cart
@@ -292,104 +285,8 @@
                     <div class="flex items-center justify-between border-b border-gray-100 pb-3">
                         <div class="flex-1 min-w-0 pr-2">
                             <h4 class="text-xs font-bold text-gray-900 truncate">${item.name}</h4>
-                            <p class="text-[11px] text-gray-500 mt-0.5">${symbol}${price.toLocaleString()} × ${item.quantity}</p>
+                            <p class="text-[11px] text-gray-500 mt-0.5">${symbol}${price.toLocaleString()} ×${item.quantity}</p>
                         </div>
                         <div class="flex items-center space-x-2">
                             <span class="text-xs font-extrabold text-gray-900">${symbol}${itemTotal.toLocaleString()}</span>
-                            <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 text-[10px] font-bold">Remove</button>
-                        </div>
-                    </div>`);
-            });
-
-            cartCountElement.textContent = totalCount;
-            cartCountElement.classList.remove('hidden');
-            totalPriceElement.textContent = `${symbol}${totalPrice.toLocaleString()}`;
-        }
-
-        function removeFromCart(productId) {
-            shoppingCart = shoppingCart.filter(item => item.id !== productId);
-            updateCartUI();
-        }
-
-        // WhatsApp Checkout Engine Integration Pipeline
-        function proceedToWhatsAppCheckout() {
-            if (shoppingCart.length === 0) {
-                alert("Your cart is empty.");
-                return;
-            }
-
-            // Replace with your operational business WhatsApp number (include country code, no + signs or spaces)
-            const businessPhoneNumber = "966534657213"; 
-            const symbol = currentCurrency === 'INR' ? '₹' : '$';
-            
-            let totalAmount = 0;
-            let messageOrderLines = "";
-
-            shoppingCart.forEach((item, index) => {
-                const price = currentCurrency === 'INR' ? item.priceINR : item.priceUSD;
-                const itemTotal = price * item.quantity;
-                totalAmount += itemTotal;
-                
-                messageOrderLines += `${index + 1}. *${item.name}* (${item.sku})\n`;
-                messageOrderLines += `    Qty: ${item.quantity} × ${symbol}${price.toLocaleString()}\n`;
-                messageOrderLines += `    Total: ${symbol}${itemTotal.toLocaleString()}\n\n`;
-            });
-
-            let WhatsAppText = `*JESDA GROUP - NEW ORDER INQUIRY*\n`;
-            WhatsAppText += `=========================\n\n`;
-            WhatsAppText += `Hello JESDA Operations Team,\n\n`;
-            WhatsAppText += `I would like to place an order for the following items:\n\n`;
-            WhatsAppText += messageOrderLines;
-            WhatsAppText += `=========================\n`;
-            WhatsAppText += `*GRAND TOTAL: ${symbol}${totalAmount.toLocaleString()} (${currentCurrency})*\n\n`;
-            WhatsAppText += `Please confirm availability and share logistics/processing timelines.`;
-
-            const secureEncodedURL = `https://api.whatsapp.com/send?phone=${businessPhoneNumber}&text=${encodeURIComponent(WhatsAppText)}`;
-            window.open(secureEncodedURL, '_blank');
-        }
-
-        function toggleCart(open) {
-            const sidebar = document.getElementById('cart-sidebar');
-            const overlay = document.getElementById('cart-overlay');
-            if (open) {
-                overlay.classList.remove('hidden');
-                setTimeout(() => { overlay.classList.add('opacity-100'); sidebar.classList.add('open'); }, 10);
-            } else {
-                sidebar.classList.remove('open');
-                overlay.classList.remove('opacity-100');
-                setTimeout(() => overlay.classList.add('hidden'), 300);
-            }
-        }
-
-        // Keep local cache intact on currency switches
-        function setCurrency(currency) {
-            currentCurrency = currency;
-            const btnINR = document.getElementById('btn-INR');
-            const btnUSD = document.getElementById('btn-USD');
-
-            if (currency === 'INR') {
-                btnINR.className = "px-3 py-1 rounded-md text-xs font-bold transition bg-brand-green-btn shadow";
-                btnUSD.className = "px-3 py-1 rounded-md text-xs font-bold transition text-gray-400 hover:text-white";
-            } else {
-                btnUSD.className = "px-3 py-1 rounded-md text-xs font-bold transition bg-brand-green-btn shadow";
-                btnINR.className = "px-3 py-1 rounded-md text-xs font-bold transition text-gray-400 hover:text-white";
-            }
-            renderStorefront();
-            updateCartUI();
-        }
-
-        function filterCategory(category) {
-            currentCategory = category;
-            document.querySelectorAll('.cat-btn').forEach(btn => {
-                const btnCategory = btn.getAttribute('onclick').match(/filterCategory\('(.+)'\)/)[1];
-                if (btnCategory === category) {
-                    btn.className = "cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-brand-green-btn shadow-sm transition";
-                } else {
-                    btn.className = "cat-btn px-4 py-1.5 rounded-full text-xs font-semibold bg-white text-gray-600 border border-gray-200 hover:bg-gray-50 transition";
-                }
-            });
-            renderStorefront();
-        }
-    </script>
-</body>
-</html>
+                            <button onclick="removeFromCart('${item.id}')" class="text-red-500 hover:text-red-700 text-
